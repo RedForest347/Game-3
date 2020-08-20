@@ -22,8 +22,17 @@ public class CameraProc : ProcessingBase, ICustomUpdate
         PlayerCmp playerCmp = Storage.GetComponent<PlayerCmp>(player);
         CameraCmp cameraCmp = Storage.GetComponent<CameraCmp>(camera);
 
+        int sensitivity = 1;
+        float new_x_pos = cameraCmp.camera.transform.rotation.eulerAngles.x + Input.GetAxis("Mouse Y") * sensitivity;
 
-        cameraCmp.camera.transform.position = playerCmp.transform.position + playerCmp.transform.InverseTransformVector(cameraCmp.offset_pos);
-        cameraCmp.camera.transform.rotation = playerCmp.transform.rotation * Quaternion.Euler(cameraCmp.offset_rotation);
+        cameraCmp.camera.transform.position = playerCmp.transform.position + playerCmp.transform.TransformVector(cameraCmp.offset_pos);
+        cameraCmp.camera.transform.rotation = playerCmp.transform.rotation * Quaternion.Euler(cameraCmp.camera.transform.rotation.eulerAngles + new Vector3(new_x_pos, 0, 0));
+        //cameraCmp.camera.transform.rotation *= Quaternion.Euler(Input.GetAxis("Mouse Y") + cameraCmp.camera.transform.rotation.x, 0, 0);
+
+        
+
+        //cameraCmp.camera.transform.rotation = Quaternion.Euler(new_x_pos, 0, 0);
+
+        //MyAngle = new Vector3(0, Input.GetAxis("Mouse X") * sensitivity.y, Input.GetAxis("Mouse Y") * sensitivity.z);
     }
 }

@@ -10,12 +10,12 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate
 
     public void CustomFixedUpdate()
     {
-        foreach (int move in MoveGroup)
+        foreach (int player in MoveGroup)
         {
-            EntityBase entity = EntityBase.GetEntity(move);
+            EntityBase playerEntity = EntityBase.GetEntity(player);
 
-            Move(entity);
-            Rotate(entity);
+            Move(playerEntity);
+            Rotate(playerEntity);
             //Debug.Log("DDD");
         }
     }
@@ -47,9 +47,29 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate
         }
     }
 
-    void Rotate(EntityBase entity)
+    void Rotate(EntityBase Player)
     {
+        Vector3 MousePos = Input.mousePosition;
 
+        Vector3 MyAngle = new Vector3();
+        float sensitivity = Player.GetEntityComponent<MoveCmp>().rotate_sensitivity_y;
+        // расчитываем угол, как:
+        // разница между позицией мышки и центром экрана, делённая на размер экрана
+        //  (чем дальше от центра экрана тем сильнее поворот)
+        // и умножаем угол на чуствительность из параметров
+
+        MyAngle = new Vector3(0, Input.GetAxis("Mouse X") * sensitivity, 0);
+        //MyAngle = new Vector3(0, Input.GetAxis("Mouse X") * sensitivity.y, Input.GetAxis("Mouse Y") * sensitivity.z);
+        //Debug.Log(Input.GetAxis("Vertical"));
+
+        /*MyAngle.y = sensitivity.y * ((MousePos.x - (Screen.width / 2)) / Screen.width);
+        MyAngle.z = sensitivity.x * ((MousePos.y - (Screen.height / 2)) / Screen.height);
+        MyAngle.x = 0;*/
+
+        RigidbodyCmp rigidbodyCmp = Storage.GetComponent<RigidbodyCmp>(Player.entity);
+        rigidbodyCmp.rigidbody.MoveRotation(rigidbodyCmp.transform.rotation * Quaternion.Euler(MyAngle));
+        //Debug.Log("fdasf");
+        //rigidbodyCmp.rigidbody.
     }
 
 }
