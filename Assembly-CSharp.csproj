@@ -100,10 +100,18 @@
     <Compile Include="Assets\Framework\To tests\GOHolder.cs" />
     <Compile Include="Assets\Framework\To tests\KernelManager.cs" />
     <Compile Include="Assets\Framework\To tests\Test.cs" />
+    <Compile Include="Assets\Game\Components\PlayerCmp.cs" />
+    <Compile Include="Assets\Game\Components\RigidbodyCmp.cs" />
+    <Compile Include="Assets\TestF\CameraController\CameraControllerStarter.cs" />
+    <Compile Include="Assets\TestF\CameraController\Components\CameraCmp.cs" />
+    <Compile Include="Assets\TestF\CameraController\Processings\CameraProc.cs" />
     <Compile Include="Assets\TestF\DoorButton\Components\Door.cs" />
-    <Compile Include="Assets\TestF\DoorButton\Components\Player.cs" />
     <Compile Include="Assets\TestF\DoorButton\Processings\OpenCloseDoor.cs" />
     <Compile Include="Assets\TestF\DoorButton\StarterDoorTest.cs" />
+    <Compile Include="Assets\TestF\PlayerController\Components\MoveCmp.cs" />
+    <Compile Include="Assets\TestF\PlayerController\Data\MoveControls.cs" />
+    <Compile Include="Assets\TestF\PlayerController\PlayerControllerStarter.cs" />
+    <Compile Include="Assets\TestF\PlayerController\Processings\MoveProc.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity/Игра 3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
