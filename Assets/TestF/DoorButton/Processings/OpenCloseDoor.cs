@@ -7,7 +7,7 @@ using Stopwatch = System.Diagnostics.Stopwatch;
 public class OpenCloseDoor : ProcessingBase, ICustomUpdate
 {
     Group DoorGroup = Group.Create(new ComponentsList<Door>(), ComponentsList.Empty);
-    Group PlayerGroup = Group.Create(new ComponentsList<Player>(), ComponentsList.Empty);
+    Group PlayerGroup = Group.Create(new ComponentsList<PlayerCmp>(), ComponentsList.Empty);
     int switching_distances_gorizontal = 10;
     int switching_distances_vertical = 3;
 

@@ -326,6 +326,21 @@ namespace RangerV
             groups.Remove(this);
         }
 
+        public int[] GetEntitiesArray()
+        {
+            int[] Entities = new int[entities_count];
+            int next = 0;
+
+            EntContainer[] array = EntitiesDictionary.Values.ToArray();
+
+            for (int i = 0; i < array.Length; i++)
+                if (array[i].was_added)
+                    Entities[next++] = array[i].entity;
+
+            return Entities;
+        }
+
+
         public bool Contains(int entity)
         {
             return EntitiesDictionary.ContainsKey(entity);

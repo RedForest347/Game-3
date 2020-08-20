@@ -15,6 +15,8 @@ namespace RangerV
     /// действия процессина проходят в CustomUpdate (или иных Custom апдейтах)
     /// 
     /// при остановке (удалении) процессинга, при наличии интерфейса ICustomDisable выполняется функция OnDisable.
+    /// 
+    /// следует именовать [имя_процессинга]Proc
     /// </summary>
     public class ProcessingBase
     {
