@@ -100,6 +100,10 @@
     <Compile Include="Assets\Framework\To tests\GOHolder.cs" />
     <Compile Include="Assets\Framework\To tests\KernelManager.cs" />
     <Compile Include="Assets\Framework\To tests\Test.cs" />
+    <Compile Include="Assets\TestF\DoorButton\Components\Door.cs" />
+    <Compile Include="Assets\TestF\DoorButton\Components\Player.cs" />
+    <Compile Include="Assets\TestF\DoorButton\Processings\OpenCloseDoor.cs" />
+    <Compile Include="Assets\TestF\DoorButton\StarterDoorTest.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Unity/Игра 3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

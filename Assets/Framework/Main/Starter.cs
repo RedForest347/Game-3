@@ -12,7 +12,7 @@ namespace RangerV
     // При добавлении в GSS словарь, на processing"е выполняется метод OnAwake (при наличии интерфейса IAwake).
     //
     // 1) создается ManagerUpdate
-    // 2) происходит StarterSetup отвечающий за добавление processing'ов
+    // 2) происходит StarterSetup отвечающий за добавление processing'ов (именно его нужно прописать в стартере уровня)
     // 3) при добавлении на processing"е выполняется метод OnAwake
     //
     //

@@ -12,6 +12,8 @@ namespace RangerV
     /// 
     /// добавление компонента в ManagerUpdate производится в стартере уровня (например, в Level1Starter), куда нужно вручную вписывать процессинг
     /// 
+    /// действия процессина проходят в CustomUpdate (или иных Custom апдейтах)
+    /// 
     /// при остановке (удалении) процессинга, при наличии интерфейса ICustomDisable выполняется функция OnDisable.
     /// </summary>
     public class ProcessingBase

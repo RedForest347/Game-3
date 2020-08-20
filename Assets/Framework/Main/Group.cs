@@ -408,7 +408,7 @@ namespace RangerV
     public class ComponentsList
     {
         public List<Type> types;
-        public ComponentsList Empty { get => new ComponentsList(); }
+        public static ComponentsList Empty { get => new ComponentsList(); }
 
         public ComponentsList()
         {

@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Stopwatch = System.Diagnostics.Stopwatch;
 
 namespace RangerV
 {
     public class GlobalSystemStorage : MonoBehaviour
     {
         public static GlobalSystemStorage Instance { get => Singleton<GlobalSystemStorage>.Instance; }
+        public bool debug_mod = false;
+
         Dictionary<Type, ProcessingBase> Processings;
 
 
