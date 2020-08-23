@@ -9,5 +9,6 @@ public class CameraControllerStarter : Starter
     {
         GlobalSystemStorage.Add<MoveProc>();
         GlobalSystemStorage.Add<CameraProc>();
+        GlobalSystemStorage.Add<CursorProc>();
     }
 }

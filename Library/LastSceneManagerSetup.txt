@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/TestF/CameraController/Scenes/CameraScene.unity
+- path: Assets/Game/Scenes/TestScene.unity
   isLoaded: 1
   isActive: 1
