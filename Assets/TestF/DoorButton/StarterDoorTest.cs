@@ -7,7 +7,7 @@ public class StarterDoorTest : Starter
 {
     public override void StarterSetup()
     {
-        GlobalSystemStorage.Add<OpenCloseDoor>();
+        GlobalSystemStorage.Add<OpenCloseDoorProc>();
     }
 
    
