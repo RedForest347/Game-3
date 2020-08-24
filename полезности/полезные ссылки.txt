@@ -1,0 +1,2 @@
+https://gamedev.stackexchange.com/questions/151845/how-to-make-neon-lightning-effect-in-unity-3d - светящийся шейдер
+https://www.youtube.com/watch?time_continue=111&v=a0OQvWAPeuo&feature=emb_logo - PostProcessingVolume
