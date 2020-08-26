@@ -31,7 +31,7 @@ namespace RangerV
 
     public interface ICustomDisable
     {
-        void OnDisable();
+        void OnCustomDisable();
     }
 
     public interface IReceive<T> where T : ISignal, new()

@@ -102,7 +102,7 @@ namespace RangerV
             {
                 get
                 {
-                    if (_entityData.Length <= index || _entityData[index] == null)
+                    if (_entityData.Length <= index || _entityData[index] == null/* || index < 0*/)
                         return new entityData();
                     return _entityData[index];
                 }

@@ -2,14 +2,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CursorProc : ProcessingBase, ICustomUpdate
+public class CursorProc : ProcessingBase, ICustomUpdate, ICustomStart
 {
+    
     Group CursorGroup = Group.Create(new ComponentsList<CursorComp>());
+
+
 
     public void CustomUpdate()
     {
-        DDD();
+        
+    }
+
+    public void OnStart()
+    {
+        SetCursorPreset();
     }
 
     void DDD()
@@ -19,8 +28,12 @@ public class CursorProc : ProcessingBase, ICustomUpdate
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            //Cursor.SetCursor(Storage.GetComponent<CursorComp>(cursor).cursorTexture, new Vector2(0, 0), CursorMode.Auto);
-            Cursor.visible = !Cursor.visible;
+            Cursor.lockState = CursorLockMode.Locked;
         }
+    }
+
+    void SetCursorPreset()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

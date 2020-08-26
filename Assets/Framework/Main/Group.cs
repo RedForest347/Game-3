@@ -119,7 +119,8 @@ namespace RangerV
         long hash_code_exceptions;
 
         public event Action<int> OnAddEntity;
-        public event Action<int> OnRemoveEntity;
+        public event Action<int> OnAfterRemoveEntity;
+        public event Action<int> OnBeforeRemoveEntity;
 
         private Group(List<Type> Components) : this(Components, new List<Type>(0)) { }
 
@@ -145,6 +146,12 @@ namespace RangerV
 
         void AddEntity(int entity)
         {
+            string mes = "";
+            for (int i = 0; i < Components.Count; i++)
+                mes += Components[i] + " ";
+
+            Debug.Log("в группу " + mes + " добавлена сущность " + entity);
+
             EntitiesDictionary[entity].was_added = true;
             entities_count++;
             OnAddEntity?.Invoke(entity);
@@ -154,7 +161,7 @@ namespace RangerV
         {
             EntitiesDictionary[entity].was_added = false;
             entities_count--;
-            OnRemoveEntity?.Invoke(entity);
+            OnAfterRemoveEntity?.Invoke(entity);
         }
 
         public List<Type> GetComponentTypes()
@@ -291,6 +298,8 @@ namespace RangerV
         }
         void OnRemoveComponent(int ent)
         {
+            OnBeforeRemoveEntity?.Invoke(ent);
+
             EntitiesDictionary[ent].remains_components++;
 
             if (EntitiesDictionary[ent].was_added)
@@ -298,7 +307,10 @@ namespace RangerV
         }
         void OnAddException(int ent)
         {
+            OnBeforeRemoveEntity?.Invoke(ent);
+
             EntitiesDictionary[ent].remains_exceptions++;
+
             if (EntitiesDictionary[ent].was_added)
                 RemoveEntity(ent);
         }
@@ -343,7 +355,10 @@ namespace RangerV
 
         public bool Contains(int entity)
         {
-            return EntitiesDictionary.ContainsKey(entity);
+            EntitiesDictionary.TryGetValue(entity, out EntContainer entContainer);
+
+            return entContainer?.was_added ?? false;
+            //return EntitiesDictionary.ContainsKey(entity);
         }
 
         #region Equals/HashCode/Enumerator
