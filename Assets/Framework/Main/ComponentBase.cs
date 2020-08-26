@@ -22,6 +22,8 @@ namespace RangerV
     [System.Serializable]
     public class ComponentBase: MonoBehaviour, IComponent
     {
+        int entity;
+        EntityBase entityBase;// добавить
         //public string name;
     }
 }

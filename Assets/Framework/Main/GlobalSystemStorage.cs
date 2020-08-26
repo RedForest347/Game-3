@@ -58,7 +58,7 @@ namespace RangerV
 
             for (int i = 0; i < processings.Count; i++)
                 if (values[i] is ICustomDisable)
-                    (values[i] as ICustomDisable).OnDisable();
+                    (values[i] as ICustomDisable).OnCustomDisable();
 
             processings = new Dictionary<Type, ProcessingBase>();
         }
