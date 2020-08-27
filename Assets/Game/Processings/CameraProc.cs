@@ -1,13 +1,36 @@
 ﻿using RangerV;
 using UnityEngine;
 
-public class CameraProc : ProcessingBase, ICustomUpdate
+public class CameraProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomUpdate, IReceive<StartStopMoveSignal>
 {
     Group CameraGroup = Group.Create(new ComponentsList<CameraCmp>());
     Group PlayerGroup = Group.Create(new ComponentsList<PlayerCmp>());
 
+    bool need_camera;
+
+
+    public void OnAwake()
+    {
+        need_camera = true;
+    }
+
+
+    public void OnStart()
+    {
+        SignalManager<StartStopMoveSignal>.Instance.AddReceiver(this);
+    }
+
     public void CustomUpdate()
     {
+        if (need_camera)
+        {
+            CameraRotate();
+        }
+    }
+
+    void CameraRotate()
+    {
+
         if (CameraGroup.entities_count != 1)
             Debug.LogError("в группе CameraGroup больше одной сущности");
 
@@ -31,5 +54,10 @@ public class CameraProc : ProcessingBase, ICustomUpdate
 
         cameraCmp.camera.transform.position = playerCmp.transform.position + playerCmp.transform.TransformVector(cameraCmp.offset_pos);
         cameraCmp.camera.transform.rotation = playerCmp.transform.rotation * Quaternion.Euler(cameraCmp.offset_rotation + cameraCmp.player_rotation);
+    }
+
+    public void SignalHandler(StartStopMoveSignal arg)
+    {
+        need_camera = arg.signal_to_start;
     }
 }

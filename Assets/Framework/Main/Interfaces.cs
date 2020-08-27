@@ -34,6 +34,13 @@ namespace RangerV
         void OnCustomDisable();
     }
 
+    public interface IStopStartProc
+    {
+        void Stop();
+
+        void Start();
+    }
+
     public interface IReceive<T> where T : ISignal, new()
     {
         void SignalHandler(T arg);

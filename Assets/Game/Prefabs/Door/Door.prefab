@@ -332,7 +332,7 @@ MonoBehaviour:
     requireStarter: 0
     initialized: 0
     runtime: 0
-  show_comp: 0100
+  show_comp: 0101
 --- !u!65 &5047444070505397612
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PressKey: 102
-  activate_distance: 0
+  activate_distance: 3
 --- !u!1 &6694060445999026345
 GameObject:
   m_ObjectHideFlags: 0
