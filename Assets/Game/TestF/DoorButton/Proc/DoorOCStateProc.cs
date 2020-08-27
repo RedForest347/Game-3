@@ -24,10 +24,10 @@ public class DoorOCStateProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICus
 
     public void OnRemoveEnt(int door)
     {
-        Storage.GetComponent<DoorAnimCmp>(door).OnStartClose -= (int ent) => Storage.GetComponent<DoorAnimCmp>(ent).is_open = false;
+        /*Storage.GetComponent<DoorAnimCmp>(door).OnStartClose -= (int ent) => Storage.GetComponent<DoorAnimCmp>(ent).is_open = false;
         Storage.GetComponent<DoorAnimCmp>(door).OnStartOpen -= (int ent) => Storage.GetComponent<DoorAnimCmp>(ent).is_close = false;
         Storage.GetComponent<DoorAnimCmp>(door).OnCompleteOpen -= (int ent) => Storage.GetComponent<DoorAnimCmp>(ent).is_open = true;
-        Storage.GetComponent<DoorAnimCmp>(door).OnCompleteClose -= (int ent) => Storage.GetComponent<DoorAnimCmp>(ent).is_close = true;
+        Storage.GetComponent<DoorAnimCmp>(door).OnCompleteClose -= (int ent) => Storage.GetComponent<DoorAnimCmp>(ent).is_close = true;*/
     }
 
    

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Game/TestF/Pedestal/PedestalScene.unity
+- path: Assets/Game/Scenes/MainScene.unity
   isLoaded: 1
   isActive: 1

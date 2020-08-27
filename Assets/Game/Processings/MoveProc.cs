@@ -107,5 +107,12 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
     {
 
         need_move = need_rotate = arg.signal_to_start;
+
+        if (!arg.signal_to_start)
+        {
+            int player = MoveGroup.GetEntitiesArray()[0];
+            //Storage.GetComponent<RigidbodyCmp>(player).rigidbody.velocity.Set(0, 0, 0);
+            Storage.GetComponent<RigidbodyCmp>(player).rigidbody.velocity = Vector3.zero;
+        }
     }
 }
