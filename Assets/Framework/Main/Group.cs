@@ -146,12 +146,6 @@ namespace RangerV
 
         void AddEntity(int entity)
         {
-            string mes = "";
-            for (int i = 0; i < Components.Count; i++)
-                mes += Components[i] + " ";
-
-            Debug.Log("в группу " + mes + " добавлена сущность " + entity);
-
             EntitiesDictionary[entity].was_added = true;
             entities_count++;
             OnAddEntity?.Invoke(entity);

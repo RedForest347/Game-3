@@ -1,39 +1,32 @@
 ﻿using RangerV;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class CursorProc : ProcessingBase, ICustomUpdate, ICustomStart
+public class CursorProc : ProcessingBase, ICustomAwake, ICustomStart, IReceive<StartStopMoveSignal>
 {
-    
-    Group CursorGroup = Group.Create(new ComponentsList<CursorComp>());
+    //Group CursorGroup = Group.Create(new ComponentsList<CursorComp>());
+    CursorLockMode previous_state;
 
-
-
-    public void CustomUpdate()
+    public void OnAwake()
     {
-        
+        previous_state = CursorLockMode.None;
     }
 
     public void OnStart()
     {
-        SetCursorPreset();
+        SetCursorPreset(CursorLockMode.Locked);
+        SignalManager<StartStopMoveSignal>.Instance.AddReceiver(this);
     }
 
-    void DDD()
+    public void SignalHandler(StartStopMoveSignal arg)
     {
-        int cursor = CursorGroup.GetEntitiesArray()[0];
-
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        if (arg.signal_to_start)
+            SetCursorPreset(CursorLockMode.Locked);
+        else
+            SetCursorPreset(previous_state);
     }
 
-    void SetCursorPreset()
+    void SetCursorPreset(CursorLockMode mode)
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = mode;
     }
 }

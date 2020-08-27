@@ -230,7 +230,7 @@ MonoBehaviour:
     requireStarter: 0
     initialized: 0
     runtime: 0
-  show_comp: 00000001
+  show_comp: 00010001
 --- !u!114 &1668769631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,8 +255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0916ad16800404b4fb424f52addedc29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move_speed: 111
-  max_speed: 1
+  move_speed: 1111
+  max_move_speed: 0
   rotate_speed: 7
   max_rotate_speed: 1
   rotate_sensitivity_y: 1

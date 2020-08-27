@@ -6,6 +6,11 @@ using Stopwatch = System.Diagnostics.Stopwatch;
 
 namespace RangerV
 {
+    /// <summary>
+    /// вопрос, как на время отключить процессинг?
+    /// (просто так исключить его из Processings не вариант, т.к. исключение-включение в Dictionary имеет неприятные последствия)
+    /// </summary>
+
     public class GlobalSystemStorage : MonoBehaviour
     {
         public static GlobalSystemStorage Instance { get => Singleton<GlobalSystemStorage>.Instance; }
@@ -21,6 +26,9 @@ namespace RangerV
 
         public static T Add<T>() where T : ProcessingBase, new()
         {
+            if (Instance.Processings.ContainsKey(typeof(T)))
+                Debug.Log("Компонент " + typeof(T).Name + " уже добавлен в GlobalSystemStorage. он будет добавлен повторно");
+
             T processing = new T(); 
             Instance.Processings.Add(typeof(T), processing);
 

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Game/TestF/DoorButton/Scenes/DoorWithButtonTest.unity
+- path: Assets/Game/TestF/Pedestal/PedestalScene.unity
   isLoaded: 1
   isActive: 1
