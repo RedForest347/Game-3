@@ -63,7 +63,7 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
         MoveControls moveControls = moveCmp.moveControls;
 
         float force = moveCmp.move_speed * Time.fixedDeltaTime;
-
+        //Debug.Log("force = " + force);
         if (Input.GetKey(moveControls.Forvard))
             rigidbody.AddRelativeForce(new Vector3(force, 0, 0));
         else if (Input.GetKey(moveControls.Backward))

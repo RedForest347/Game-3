@@ -782,8 +782,6 @@ namespace RangerV
         {
             if (selected_object.gameObject == null)
                 Debug.Log("selected_object.gameObject == null");
-            else
-                Debug.Log(selected_object.gameObject);
 
             PrefabUtility.ApplyPrefabInstance(selected_object.gameObject, InteractionMode.AutomatedAction); // сделать корректную отмену добавления/удаления компонентов
         }

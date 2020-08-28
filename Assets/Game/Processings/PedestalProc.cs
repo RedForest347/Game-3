@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RangerV;
+using TMPro;
 
 public class PedestalProc : ProcessingBase, ICustomStart, ICustomUpdate
 {
@@ -47,6 +48,10 @@ public class PedestalProc : ProcessingBase, ICustomStart, ICustomUpdate
             if (UIElem.activeInHierarchy)
             {
                 SignalManager<StartStopMoveSignal>.Instance.SendSignal(new StartStopMoveSignal(true));
+
+                SignalManager<CompleteWriteTextSignal>.Instance.SendSignal(new CompleteWriteTextSignal(UIElem.GetComponent<TMP_InputField>().text));
+                //Debug.Log("text = " + UIElem.GetComponent<TMP_InputField>().text + " text2 = " + UIElem.GetComponent<TMP_InputField>().textComponent.text);
+
                 UIElem.SetActive(false);
             }
         }
