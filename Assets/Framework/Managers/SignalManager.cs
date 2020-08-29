@@ -2,10 +2,7 @@
 
 namespace RangerV
 {
-    /// <summary>
     /// сделать автоматическое добавление процессинга сюда (мб)
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
     public class SignalManager<T> where T : ISignal, new()
     {
         public static SignalManager<T> Instance = new SignalManager<T>();
@@ -25,10 +22,11 @@ namespace RangerV
 
         public void SendSignal(T arg)
         {
-            if (signalHandler != null)
+            signalHandler?.Invoke(arg);
+            /*if (signalHandler != null)
                 signalHandler(arg);
             else
-                Debug.LogWarning("SignalHandler of " + typeof(T).Name + " is null");
+                Debug.LogWarning("SignalHandler of " + typeof(T).Name + " is null");*/
         }
 
     }

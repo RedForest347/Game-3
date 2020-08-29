@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICustomStart, ICustomAwake, IReceive<StartStopMoveSignal>
+public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICustomStart, ICustomAwake, IReceive<ChangeMoveStateSignal>
 {
     Group MoveGroup = Group.Create(new ComponentsList<PlayerCmp, MoveCmp, RigidbodyCmp>());
     Group JumpGroup = Group.Create(new ComponentsList<JumpCmp, RigidbodyCmp>());
@@ -21,7 +21,7 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
 
     public void OnStart()
     {
-        SignalManager<StartStopMoveSignal>.Instance.AddReceiver(this);
+        SignalManager<ChangeMoveStateSignal>.Instance.AddReceiver(this);
     }
 
 
@@ -64,6 +64,9 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
 
         float force = moveCmp.move_speed * Time.fixedDeltaTime;
 
+        if (Input.GetKey(moveControls.Forvard) || Input.GetKey(moveControls.Backward) && Input.GetKey(moveControls.Left) || Input.GetKey(moveControls.Rigt))
+            force /= (float)Math.Sqrt(2);
+
         if (Input.GetKey(moveControls.Forvard))
             rigidbody.AddRelativeForce(new Vector3(force, 0, 0));
         else if (Input.GetKey(moveControls.Backward))
@@ -103,9 +106,16 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
         }
     }
 
-    public void SignalHandler(StartStopMoveSignal arg)
+    public void SignalHandler(ChangeMoveStateSignal arg)
     {
 
         need_move = need_rotate = arg.signal_to_start;
+
+        if (!arg.signal_to_start)
+        {
+            int player = MoveGroup.GetEntitiesArray()[0];
+            //Storage.GetComponent<RigidbodyCmp>(player).rigidbody.velocity.Set(0, 0, 0);
+            Storage.GetComponent<RigidbodyCmp>(player).rigidbody.velocity = Vector3.zero;
+        }
     }
 }

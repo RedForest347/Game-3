@@ -151,10 +151,27 @@ namespace RangerV
             OnAddEntity?.Invoke(entity);
         }
 
+        /// <summary>
+        /// проверяет нужно ли удалить сущность ent из данной группы
+        /// </summary>
+        /// <param name="ent"></param>
+        void CheckEntityOnRemove(int ent)
+        {
+            if (EntitiesDictionary[ent].was_added)
+            {
+                OnBeforeRemoveEntity?.Invoke(ent);
+                RemoveEntity(ent);
+            }
+        }
+
         void RemoveEntity(int entity)
         {
             EntitiesDictionary[entity].was_added = false;
             entities_count--;
+
+            if (EntityBase.GetEntity(entity) == null)
+                Debug.Log("EntityBase.GetEntity(entity) == null");
+
             OnAfterRemoveEntity?.Invoke(entity);
         }
 
@@ -214,13 +231,13 @@ namespace RangerV
             for (int comp = 0; comp < Components.Count; comp++)
             {
                 Storage.GetStorage(Components[comp]).OnAdd += OnAddComponent;
-                Storage.GetStorage(Components[comp]).OnRemove += OnRemoveComponent;
+                Storage.GetStorage(Components[comp]).OnBeforeRemove += OnRemoveComponent;
             }
 
             for (int exceptions = 0; exceptions < Exceptions.Count; exceptions++)
             {
                 Storage.GetStorage(Exceptions[exceptions]).OnAdd += OnAddException;
-                Storage.GetStorage(Exceptions[exceptions]).OnRemove += OnRemoveException;
+                Storage.GetStorage(Exceptions[exceptions]).OnBeforeRemove += OnRemoveException;
             }
         }
 
@@ -234,7 +251,7 @@ namespace RangerV
                 for (int comp = 0; comp < Components.Count; comp++)
                 {
                     Storage.GetStorage(Components[comp]).OnAdd -= OnAddComponent;
-                    Storage.GetStorage(Components[comp]).OnRemove -= OnRemoveComponent;
+                    Storage.GetStorage(Components[comp]).OnBeforeRemove -= OnRemoveComponent;
                 }
             }
 
@@ -244,7 +261,7 @@ namespace RangerV
                 for (int exceptions = 0; exceptions < Exceptions.Count; exceptions++)
                 {
                     Storage.GetStorage(Exceptions[exceptions]).OnAdd -= OnAddException;
-                    Storage.GetStorage(Exceptions[exceptions]).OnRemove -= OnRemoveException;
+                    Storage.GetStorage(Exceptions[exceptions]).OnBeforeRemove -= OnRemoveException;
                 }
             }
         }
@@ -292,21 +309,15 @@ namespace RangerV
         }
         void OnRemoveComponent(int ent)
         {
-            OnBeforeRemoveEntity?.Invoke(ent);
-
             EntitiesDictionary[ent].remains_components++;
 
-            if (EntitiesDictionary[ent].was_added)
-                RemoveEntity(ent);
+            CheckEntityOnRemove(ent);
         }
         void OnAddException(int ent)
         {
-            OnBeforeRemoveEntity?.Invoke(ent);
-
             EntitiesDictionary[ent].remains_exceptions++;
 
-            if (EntitiesDictionary[ent].was_added)
-                RemoveEntity(ent);
+            CheckEntityOnRemove(ent);
         }
         void OnRemoveException(int ent)
         {
