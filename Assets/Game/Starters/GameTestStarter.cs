@@ -10,7 +10,7 @@ public class GameTestStarter : Starter
     {
         GlobalSystemStorage.Add<CameraProc>();
         GlobalSystemStorage.Add<MoveProc>();
-        GlobalSystemStorage.Add<OpenCloseDoorProc>();
+        //GlobalSystemStorage.Add<OpenCloseDoorProc>();
     }
 
     

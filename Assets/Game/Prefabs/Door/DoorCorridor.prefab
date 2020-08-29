@@ -278,7 +278,7 @@ MonoBehaviour:
     requireStarter: 0
     initialized: 0
     runtime: 0
-  show_comp: 00000001
+  show_comp: 00000101
 --- !u!114 &6271140266774273703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,8 +416,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  Open: {fileID: 8300000, guid: d4ed2b9cc950fe94cba5e23cdfd8ce86, type: 3}
-  Close: {fileID: 8300000, guid: 97433ab50332cec43b740bc351b6d8fb, type: 3}
+  OpenSound: {fileID: 8300000, guid: d4ed2b9cc950fe94cba5e23cdfd8ce86, type: 3}
+  CloseSound: {fileID: 8300000, guid: 97433ab50332cec43b740bc351b6d8fb, type: 3}
 --- !u!114 &8504597203353025413
 MonoBehaviour:
   m_ObjectHideFlags: 0

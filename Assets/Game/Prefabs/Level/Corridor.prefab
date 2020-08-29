@@ -822,6 +822,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5573320060346779674, guid: 6c4652295c065fc409d832a725140c22,
+        type: 3}
+      propertyPath: OpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d4ed2b9cc950fe94cba5e23cdfd8ce86, type: 3}
     - target: {fileID: 9043728720207293257, guid: 6c4652295c065fc409d832a725140c22,
         type: 3}
       propertyPath: Components.Array.size

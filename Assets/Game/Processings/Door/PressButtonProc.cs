@@ -17,7 +17,7 @@ public class PressButtonProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICus
             OnAddEnt(button);
 
         ButtonGroup.OnAddEntity += OnAddEnt;
-        ButtonGroup.OnAfterRemoveEntity += OnRemoveEnt;
+        ButtonGroup.OnBeforeRemoveEntity += OnRemoveEnt;
     }
 
     public void OnAddEnt(int ent)
@@ -27,6 +27,8 @@ public class PressButtonProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICus
 
     public void OnRemoveEnt(int ent)
     {
+        if (Storage.GetComponent<ButtonAnimCmp>(ent) == null)
+            Debug.Log("is NULL");
         Storage.GetComponent<ButtonAnimCmp>(ent).OnPress -= StartOpenDoor;
     }
 

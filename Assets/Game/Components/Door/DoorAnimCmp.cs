@@ -25,24 +25,28 @@ public class DoorAnimCmp : ComponentBase, ICustomAwake
 
     public void StartOpen()
     {
+        Debug.Log("StartOpen");
         int ent = GetComponent<EntityBase>().entity;
         OnStartOpen?.Invoke(ent);
     }
 
-    public void Open()
+    public void EndOpen()
     {
+        Debug.Log("EndOpen");
         int ent = GetComponent<EntityBase>().entity;
         OnCompleteOpen?.Invoke(ent);
     }
 
     public void StartClose()
     {
+        Debug.Log("StartClose");
         int ent = GetComponent<EntityBase>().entity;
         OnStartClose?.Invoke(ent);
     }
 
-    public void Close()
+    public void EndClose()
     {
+        Debug.Log("EndClose");
         int ent = GetComponent<EntityBase>().entity;
         OnCompleteClose?.Invoke(ent);
     }
