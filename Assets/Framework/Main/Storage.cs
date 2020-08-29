@@ -63,6 +63,12 @@ namespace RangerV
                 StorageDictionary[componentType].Remove(entity);
         }
 
+
+        /// <summary>
+        /// Должна вызываться только из EntityBase
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
         public static void RemoveComponent<T>(int entity) where T : ComponentBase, IComponent, new()
         {
             Storage<T>.Instance.Remove(entity);

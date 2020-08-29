@@ -17,6 +17,21 @@ namespace RangerV
     /// при остановке (удалении) процессинга, при наличии интерфейса ICustomDisable выполняется функция OnDisable.
     /// 
     /// следует именовать [имя_процессинга]Proc
+    /// 
+    /// 
+    /// при добавлении метода в event компонента следует пользоваться данной логикой:
+    ///     public void OnAwake()
+    ///     {
+    ///         foreach (int button in ButtonGroup)
+    ///             OnAddEnt(button);
+    ///
+    ///         ButtonGroup.OnAddEntity += OnAddEnt;
+    ///         ButtonGroup.OnAfterRemoveEntity += OnRemoveEnt;
+    ///     }
+    /// , т.е. сначала проверять все сущности, которые уже находятся в группах, затем добавлять в OnAddEntity, OnAfterRemoveEntity, 
+    /// либо пользоваться перегрузкой GroupCreate()
+    /// 
+    /// 
     /// </summary>
     public class ProcessingBase
     {

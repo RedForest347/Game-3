@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICustomStart, ICustomAwake, IReceive<StartStopMoveSignal>
+public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICustomStart, ICustomAwake, IReceive<ChangeMoveStateSignal>
 {
     Group MoveGroup = Group.Create(new ComponentsList<PlayerCmp, MoveCmp, RigidbodyCmp>());
     Group JumpGroup = Group.Create(new ComponentsList<JumpCmp, RigidbodyCmp>());
@@ -21,7 +21,7 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
 
     public void OnStart()
     {
-        SignalManager<StartStopMoveSignal>.Instance.AddReceiver(this);
+        SignalManager<ChangeMoveStateSignal>.Instance.AddReceiver(this);
     }
 
 
@@ -103,7 +103,7 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
         }
     }
 
-    public void SignalHandler(StartStopMoveSignal arg)
+    public void SignalHandler(ChangeMoveStateSignal arg)
     {
 
         need_move = need_rotate = arg.signal_to_start;

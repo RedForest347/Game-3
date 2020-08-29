@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using RangerV;
 
-public class PanelProc : ProcessingBase, ICustomStart, IReceive<StartGameSignal>
+public class PanelProc : ProcessingBase
 {
     Group PanelGroup = Group.Create(new ComponentsList<PanelCmp>());
 
-    public void OnStart()
-    {
-        SignalManager<StartGameSignal>.Instance.AddReceiver(this);
-    }
-
-    public void SignalHandler(StartGameSignal arg)
+    public void StartAnim()
     {
         int panel = PanelGroup.GetEntitiesArray()[0];
         Storage.GetComponent<PanelCmp>(panel).anim.Play("ScreenDarkening");
@@ -21,18 +16,18 @@ public class PanelProc : ProcessingBase, ICustomStart, IReceive<StartGameSignal>
 
     public void EndAnim()
     {
-        Debug.Log("EndAnim");
         StartProc();
+        SignalManager<StartGameSignal>.Instance.SendSignal(new StartGameSignal());
     }
 
     void StartProc()
     {
         //GlobalSystemStorage.Add<CameraProc>();
-        //GlobalSystemStorage.Add<MoveProc>();
-        //GlobalSystemStorage.Add<PressButtonProc>();
-        //GlobalSystemStorage.Add<CloseDoorProc>();
-        //GlobalSystemStorage.Add<DoorOCStateProc>();
-        //GlobalSystemStorage.Add<PedestalProc>();
-        //GlobalSystemStorage.Add<ShowTextProc>();
+        GlobalSystemStorage.Add<MoveProc>();
+        GlobalSystemStorage.Add<PressButtonProc>();
+        GlobalSystemStorage.Add<CloseDoorProc>();
+        GlobalSystemStorage.Add<DoorOCStateProc>();
+        GlobalSystemStorage.Add<PedestalProc>();
+        GlobalSystemStorage.Add<ShowTextProc>();
     }
 }

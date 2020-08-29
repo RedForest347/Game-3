@@ -1,2 +1,7 @@
 https://gamedev.stackexchange.com/questions/151845/how-to-make-neon-lightning-effect-in-unity-3d - светящийся шейдер
 https://www.youtube.com/watch?time_continue=111&v=a0OQvWAPeuo&feature=emb_logo - PostProcessingVolume
+
+
+текст не просвечивает сквозь стены:
+	https://qna.habr.com/q/268238
+	https://answers.unity.com/questions/595634/3d-textmesh-not-being-drawn-properly-in-a-2d-game.html

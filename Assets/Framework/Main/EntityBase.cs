@@ -187,12 +187,12 @@ namespace RangerV
 
         #region ADD/REMOVE
 
-        public T Add<T>() where T : ComponentBase, IComponent, new()
+        public T AddCmp<T>() where T : ComponentBase, IComponent, new()
         {
-            return (T)Add(typeof(T));
+            return (T)AddCmp(typeof(T));
         }
 
-        public ComponentBase Add(Type componentType)
+        public ComponentBase AddCmp(Type componentType)
         {
             if (componentType == typeof(ComponentBase))
             {
@@ -201,7 +201,7 @@ namespace RangerV
             }
 
             if (!state.runtime)
-                return Add_InEditorMode(componentType);
+                return AddCmp_InEditorMode(componentType);
 
             if (Storage.ContainsComponent(componentType, entity))
             {
@@ -227,7 +227,7 @@ namespace RangerV
         /// </summary>
         /// <param name="componentType">тип компонента, который требуется добавить</param>
         /// <returns>компонент, если он был добавлен, null если не был</returns>
-        ComponentBase Add_InEditorMode(Type componentType)
+        ComponentBase AddCmp_InEditorMode(Type componentType)
         {
             if (Components.Any(comp => comp.GetType() == componentType))
             {
@@ -240,35 +240,35 @@ namespace RangerV
             return _component;
         }
 
-        public bool RemoveComponent<T>() where T : ComponentBase, IComponent, new()
+        public bool RemoveCmp<T>() where T : ComponentBase, IComponent, new()
         {
             if (!state.runtime)
-                return RemoveInEditorMode(typeof(T));
+                return RemoveCmpInEditorMode(typeof(T));
 
             if (!Storage.ContainsComponent<T>(entity))
                 return false;
 
             Destroy(GetEntityComponent<T>());
             Storage.RemoveComponent<T>(entity);
-            RemoveComponentFromLists(typeof(T));
+            RemoveCmpFromLists(typeof(T));
             return true;
         }
 
-        public bool RemoveComponent(Type componentType)
+        public bool RemoveCmp(Type componentType)
         {
             if (!state.runtime)
-                return RemoveInEditorMode(componentType);
+                return RemoveCmpInEditorMode(componentType);
 
             if (!Storage.ContainsComponent(componentType, entity))
                 return false;
 
             Destroy(GetEntityComponent(componentType));
             Storage.RemoveComponent(componentType, entity);
-            RemoveComponentFromLists(componentType);
+            RemoveCmpFromLists(componentType);
             return true;
         }
 
-        bool RemoveComponentFromLists(Type componentType)
+        bool RemoveCmpFromLists(Type componentType)
         {
             for (int i = 0; i < Components.Count; i++)
             {
@@ -281,7 +281,7 @@ namespace RangerV
             return false;
         }
 
-        bool RemoveInEditorMode(Type componentType)
+        bool RemoveCmpInEditorMode(Type componentType)
         {
             int index = IndexOf(componentType);
 

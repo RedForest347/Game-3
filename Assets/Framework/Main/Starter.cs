@@ -23,13 +23,15 @@ namespace RangerV
 
         private void Awake()
         {
+            //initialized = false;
+            //Debug.Log("initialized = " + initialized);
             ManagerUpdate.Init();
             GlobalSystemStorage.Init();
             StarterSetup();
-            initialized = true;
+            
             EntitiesInitializing();
             GlobalSystemStorage.Instance.StartProcessings();
-
+            initialized = true;
             Debug.Log("initialized:   " + initialized);
         }
 

@@ -1,7 +1,7 @@
 ﻿using RangerV;
 using UnityEngine;
 
-public class CursorProc : ProcessingBase, ICustomAwake, ICustomStart, IReceive<StartStopMoveSignal>
+public class CursorProc : ProcessingBase, ICustomAwake, ICustomStart, IReceive<ChangeMoveStateSignal>
 {
     //Group CursorGroup = Group.Create(new ComponentsList<CursorComp>());
     CursorLockMode previous_state;
@@ -14,10 +14,10 @@ public class CursorProc : ProcessingBase, ICustomAwake, ICustomStart, IReceive<S
     public void OnStart()
     {
         SetCursorPreset(CursorLockMode.Locked);
-        SignalManager<StartStopMoveSignal>.Instance.AddReceiver(this);
+        SignalManager<ChangeMoveStateSignal>.Instance.AddReceiver(this);
     }
 
-    public void SignalHandler(StartStopMoveSignal arg)
+    public void SignalHandler(ChangeMoveStateSignal arg)
     {
         if (arg.signal_to_start)
             SetCursorPreset(CursorLockMode.Locked);
