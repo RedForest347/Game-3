@@ -39,7 +39,7 @@ public class FirstProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomUpda
 
     IEnumerator FirstSound()
     {
-        /*int ent = FirstDataGroup.GetEntitiesArray()[0];
+        int ent = FirstDataGroup.GetEntitiesArray()[0];
         FirstDataHolderCmp dataHolderCmp = Storage.GetComponent<FirstDataHolderCmp>(ent);
         dataHolderCmp.audioSource.PlayOneShot(dataHolderCmp.firstSteps, 1);
         dataHolderCmp.audioSource.volume = 0;
@@ -58,9 +58,8 @@ public class FirstProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomUpda
         time = Stopwatch.StartNew();
 
         while (time.Elapsed.Seconds < length)
-        {
             yield return null;
-        }*/
+
         yield return null;
         //Debug.Log("Send Signal");
         //Debug.Log();

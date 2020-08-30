@@ -33,26 +33,42 @@ public class PedestalProc : ProcessingBase, ICustomStart, ICustomUpdate, ICustom
 
     void PressButton()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+
+        int book = Raycast();
+
+        if (book != 0)
         {
-            int book = Raycast();
+            last_active_book = book;
 
-            if (book != 0)
+            if (InZone(Storage.GetComponent<PedestalCmp>(book), EntityBase.GetEntity(PlayerGroup.GetEntitiesArray()[0]).transform.position))
             {
-                last_active_book = book;
+                GameObject UIElem = Storage.GetComponent<ActivateCanvasCmp>(book).UIElement;
 
-                if (InZone(Storage.GetComponent<PedestalCmp>(book), EntityBase.GetEntity(PlayerGroup.GetEntitiesArray()[0]).transform.position))
+
+
+
+                if (!UIElem.activeInHierarchy)
                 {
-                    GameObject UIElem = Storage.GetComponent<ActivateCanvasCmp>(book).UIElement;
 
-                    if (!UIElem.activeInHierarchy)
+                    GameObject Text = Storage.GetComponent<PedestalCmp>(book).Text;
+                    if (Text != null && !Text.activeInHierarchy)
+                        Text.SetActive(true);
+
+                    if (Input.GetKeyDown(KeyCode.F))
                     {
+
                         UIElem.SetActive(true);
                         SignalManager<ChangeMoveStateSignal>.Instance.SendSignal(new ChangeMoveStateSignal(false));
                         in_book = true;
+
+                        Storage.GetComponent<PedestalCmp>(book).Text.SetActive(false);
                     }
                 }
             }
+        }
+        else if (last_active_book != 0 && Storage.GetComponent<PedestalCmp>(last_active_book).Text.activeInHierarchy)
+        {
+            Storage.GetComponent<PedestalCmp>(last_active_book).Text.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Return) && in_book) // enter
@@ -79,9 +95,13 @@ public class PedestalProc : ProcessingBase, ICustomStart, ICustomUpdate, ICustom
                 int button = Storage.GetComponent<ButtonLinkCmp>(corridor_door).Button.entity;
                 Storage.GetComponent<ButtonCmp>(button).meshRenderer.material = Storage.GetComponent<ButtonMaterialCmp>(button).Green;
                 in_book = false;
+
+                Storage.GetComponent<PedestalCmp>(book).Text.SetActive(false);
             }
         }
     }
+
+
 
     int Raycast()
     {

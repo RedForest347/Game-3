@@ -6,4 +6,6 @@ using RangerV;
 public class PedestalCmp : ComponentBase
 {
     public float activate_distance;
+
+    public GameObject Text;
 }
