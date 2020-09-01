@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3991306030128491836}
   m_Layer: 0
-  m_Name: DoorCorridor 1
+  m_Name: DoorMiddleRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 8415899321337613114}
   - component: {fileID: 8870190910397534243}
   - component: {fileID: 5600837339078009273}
+  - component: {fileID: 3367518479453000930}
   m_Layer: 0
   m_Name: ButtonHolder
   m_TagString: Untagged
@@ -272,12 +273,13 @@ MonoBehaviour:
   - {fileID: 8415899321337613114}
   - {fileID: 8870190910397534243}
   - {fileID: 5600837339078009273}
+  - {fileID: 3367518479453000930}
   state:
     enabled: 0
     requireStarter: 0
     initialized: 0
     runtime: 0
-  show_comp: 000101
+  show_comp: 00000000
 --- !u!65 &3281431507264773339
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -319,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 4904223597183959067}
   PressKey: 102
-  activate_distance: 3
+  activate_distance: 3.1
 --- !u!114 &5600837339078009273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +337,18 @@ MonoBehaviour:
   Red: {fileID: 2100000, guid: cb6287e3e98ae7047b33fca12995419f, type: 2}
   Green: {fileID: 2100000, guid: bc42856f3b83917409f6c08226949319, type: 2}
   Blue: {fileID: 2100000, guid: 52f9a5740e63aa04cbf7bee3a44bef12, type: 2}
+--- !u!114 &3367518479453000930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904223597182033625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e797ccab39f797040aa86a190ad5d2e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4904223597182033627
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +485,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cb6287e3e98ae7047b33fca12995419f, type: 2}
+  - {fileID: 2100000, guid: 52f9a5740e63aa04cbf7bee3a44bef12, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

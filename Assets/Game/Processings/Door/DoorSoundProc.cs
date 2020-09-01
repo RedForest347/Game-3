@@ -37,7 +37,7 @@ public class DoorSoundProc : ProcessingBase, ICustomAwake
 
     void StartOpenSound(int door)
     {
-        Debug.Log("StartOpenSound");
+        //Debug.Log("StartOpenSound");
         AudioCmp audioCmp = Storage.GetComponent<AudioCmp>(door);
 
         audioCmp.audioSource.PlayOneShot(audioCmp.OpenSound);
@@ -46,7 +46,7 @@ public class DoorSoundProc : ProcessingBase, ICustomAwake
 
     void StartCloseSound(int door)
     {
-        Debug.Log("StartCloseSound");
+        //Debug.Log("StartCloseSound");
         AudioCmp audioCmp = Storage.GetComponent<AudioCmp>(door);
 
         audioCmp.audioSource.PlayOneShot(audioCmp.CloseSound);

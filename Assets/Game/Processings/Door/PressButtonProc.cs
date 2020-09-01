@@ -7,7 +7,7 @@ using System;
 public class PressButtonProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICustomDisable
 {
     Group CameraGroup = Group.Create(new ComponentsList<CameraCmp>());
-    Group ButtonGroup = Group.Create(new ComponentsList<ButtonCmp, ButtonAnimCmp>());
+    Group ButtonGroup = Group.Create(new ComponentsList<ButtonCmp, ButtonAnimCmp>(), new ComponentsList<MidlleRoomButtonCmp>());
     Group PlayerGroup = Group.Create(new ComponentsList<PlayerCmp>());
 
 

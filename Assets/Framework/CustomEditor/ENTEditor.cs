@@ -231,7 +231,9 @@ namespace RangerV
             if (selected_object.gameObject == null)
                 Debug.Log("selected_object.gameObject == null");
 
-            PrefabUtility.ApplyPrefabInstance(selected_object.gameObject, InteractionMode.AutomatedAction); // сделать корректную отмену добавления/удаления компонентов
+            //PrefabUtility.ApplyPrefabInstance(selected_object.gameObject, InteractionMode.AutomatedAction); // сделать корректную отмену добавления/удаления компонентов
+            //EditorUtility.SetDirty(selected_object.gameObject);
+            //нужно как то помутить сцену грязной
         }
 
         void ShowComponentFields(ComponentBase component, int index)

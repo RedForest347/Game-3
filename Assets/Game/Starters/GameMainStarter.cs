@@ -12,14 +12,8 @@ public class GameMainStarter : Starter
         GlobalSystemStorage.Add<CameraProc>();
         GlobalSystemStorage.Add<StepProc>();
         GlobalSystemStorage.Add<DoorSoundProc>();
-
-        /*GlobalSystemStorage.Add<CameraProc>();
-        GlobalSystemStorage.Add<MoveProc>();
-        GlobalSystemStorage.Add<PressButtonProc>();
-        GlobalSystemStorage.Add<CloseDoorProc>();
-        GlobalSystemStorage.Add<DoorOCStateProc>();
-        GlobalSystemStorage.Add<PedestalProc>();
-        GlobalSystemStorage.Add<ShowTextProc>();*/
+        GlobalSystemStorage.Add<PressMidlleRoomButtonProc>();
+        GlobalSystemStorage.Add<MidlleRoomDoorsProc>();
 
         //часть процессингов запускается в PanelProc
     }

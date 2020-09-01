@@ -62,7 +62,7 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
         Rigidbody rigidbody = Storage.GetComponent<RigidbodyCmp>(entity).rigidbody;
         MoveControls moveControls = moveCmp.moveControls;
 
-        float force = moveCmp.move_speed * Time.fixedDeltaTime;
+        float force = moveCmp.move_speed * Time.fixedDeltaTime * 100;
 
         if (Input.GetKey(moveControls.Forvard) || Input.GetKey(moveControls.Backward) && Input.GetKey(moveControls.Left) || Input.GetKey(moveControls.Rigt))
             force /= (float)Math.Sqrt(2);
