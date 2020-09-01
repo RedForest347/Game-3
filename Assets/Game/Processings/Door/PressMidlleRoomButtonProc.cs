@@ -28,8 +28,6 @@ public class PressMidlleRoomButtonProc : ProcessingBase, ICustomUpdate, ICustomA
 
     public void OnRemoveEnt(int ent)
     {
-        if (Storage.GetComponent<ButtonAnimCmp>(ent) == null)
-            Debug.Log("is NULL");
         Storage.GetComponent<ButtonAnimCmp>(ent).OnPress -= StartOpenDoor;
     }
 
@@ -55,7 +53,7 @@ public class PressMidlleRoomButtonProc : ProcessingBase, ICustomUpdate, ICustomA
         {
             int button = ButtonRay();
 
-            if (button != 0)
+            if (button != 0 && ButtonGroup.Contains(button))
             {
                 if (InZone(Storage.GetComponent<ButtonCmp>(button), EntityBase.GetEntity(PlayerGroup.GetEntitiesArray()[0]).transform.position))
                 {
@@ -68,7 +66,7 @@ public class PressMidlleRoomButtonProc : ProcessingBase, ICustomUpdate, ICustomA
                         Storage.GetComponent<MidlleRoomDataCmp>(room_data).last_active_button = button;
 
 
-                        //Debug.Log("PressMidlleRoomButtonProc");
+
                     }
                 }
             }
@@ -88,10 +86,8 @@ public class PressMidlleRoomButtonProc : ProcessingBase, ICustomUpdate, ICustomA
         int door = raycastHit.collider?.GetComponent<EntityBase>()?.entity ?? 0;
 
         if (door != 0 && ButtonGroup.Contains(door))
-        {
-            //Debug.Log("ButtonGroup.entities_count = " + ButtonGroup.entities_count + " ButtonGroup.Contains(" + door + ")" + " door = " + (Storage.GetComponent<ButtonComp>(door) == null ? "NULL" : "NOT NULL"));
             return door;
-        }
+
         return 0;
     }
 

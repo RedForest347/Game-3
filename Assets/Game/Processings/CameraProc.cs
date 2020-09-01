@@ -28,13 +28,6 @@ public class CameraProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomUpd
 
     void CameraRotate()
     {
-
-        if (CameraGroup.entities_count != 1)
-            Debug.LogError("в группе CameraGroup больше одной сущности");
-
-        if (PlayerGroup.entities_count != 1)
-            Debug.LogError("в группе PlayerGroup больше одной сущности");
-
         int player = PlayerGroup.GetEntitiesArray()[0];
         int camera = CameraGroup.GetEntitiesArray()[0];
 

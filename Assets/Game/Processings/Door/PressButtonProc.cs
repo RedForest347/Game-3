@@ -53,8 +53,8 @@ public class PressButtonProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICus
         if (Input.GetKeyDown(KeyCode.F))
         {
             int button = ButtonRay();
-
-            if (button != 0)
+             
+            if (button != 0 && ButtonGroup.Contains(button))
             {
                 if (InZone(Storage.GetComponent<ButtonCmp>(button), EntityBase.GetEntity(PlayerGroup.GetEntitiesArray()[0]).transform.position))
                 {

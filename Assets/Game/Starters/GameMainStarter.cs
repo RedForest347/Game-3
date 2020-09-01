@@ -13,7 +13,7 @@ public class GameMainStarter : Starter
         GlobalSystemStorage.Add<StepProc>();
         GlobalSystemStorage.Add<DoorSoundProc>();
         GlobalSystemStorage.Add<PressMidlleRoomButtonProc>();
-        GlobalSystemStorage.Add<MidlleRoomDoorsProc>();
+        GlobalSystemStorage.Add<MidlleRoomProc>();
 
         //часть процессингов запускается в PanelProc
     }

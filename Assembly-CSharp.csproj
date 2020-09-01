@@ -113,8 +113,9 @@
     <Compile Include="Assets\Game\Components\Door\DoorCloseAutomaticallyCmp.cs" />
     <Compile Include="Assets\Game\Components\Door\DoorLinkCmp.cs" />
     <Compile Include="Assets\Game\Components\FirstDataHolderCmp.cs" />
-    <Compile Include="Assets\Game\Components\LastRommTriggerCmp.cs" />
+    <Compile Include="Assets\Game\Components\LastRoomTriggerCmp.cs" />
     <Compile Include="Assets\Game\Components\MidlleRoom\MidlleRoomButtonCmp.cs" />
+    <Compile Include="Assets\Game\Components\MidlleRoom\MidlleRoomCloneTriggerCmp.cs" />
     <Compile Include="Assets\Game\Components\MidlleRoom\MidlleRoomDataCmp.cs" />
     <Compile Include="Assets\Game\Components\Move\JumpCmp.cs" />
     <Compile Include="Assets\Game\Components\Move\MoveCmp.cs" />
@@ -130,9 +131,10 @@
     <Compile Include="Assets\Game\Processings\Door\CloseDoorProc.cs" />
     <Compile Include="Assets\Game\Processings\Door\DoorOCStateProc.cs" />
     <Compile Include="Assets\Game\Processings\Door\DoorSoundProc.cs" />
-    <Compile Include="Assets\Game\Processings\Door\MidlleRoomDoorsProc.cs" />
+    <Compile Include="Assets\Game\Processings\Door\MidlleRoomProc.cs" />
     <Compile Include="Assets\Game\Processings\Door\PressButtonProc.cs" />
     <Compile Include="Assets\Game\Processings\Door\PressMidlleRoomButtonProc.cs" />
+    <Compile Include="Assets\Game\Processings\Endings\BadEndProc.cs" />
     <Compile Include="Assets\Game\Processings\FirstProc.cs" />
     <Compile Include="Assets\Game\Processings\MoveProc.cs" />
     <Compile Include="Assets\Game\Processings\PanelProc.cs" />
