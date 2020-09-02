@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488064281123685985}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -24.85, y: -8.8, z: -11.94}
-  m_LocalScale: {x: 1, y: 1.21, z: 1}
+  m_LocalPosition: {x: -24.85, y: -8.8, z: -11.96}
+  m_LocalScale: {x: 1, y: 1.22, z: 1}
   m_Children: []
   m_Father: {fileID: 5529236065664083772}
   m_RootOrder: 4
@@ -489,8 +489,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 37.521957, y: 31.667568, z: 1.3878342}
-  m_Center: {x: -1.0458412, y: 4.223326, z: -1.8543676}
+  m_Size: {x: 37.521957, y: 31.667568, z: 1.255451}
+  m_Center: {x: -1.04584, y: 4.223293, z: -1.920547}
 --- !u!1 &488064281123685997
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,8 +609,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488064281123685999}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -24.86, y: -8.88, z: -5.19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -24.86, y: -8.88, z: -5.2}
+  m_LocalScale: {x: 1, y: 1.003, z: 1}
   m_Children: []
   m_Father: {fileID: 5529236065664083772}
   m_RootOrder: 1
@@ -1176,7 +1176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MidlleRoomDoors: []
   last_active_button: 0
-  SpawnPoint: {fileID: 4246915913055689220}
+  current_composition_level: 0
+  alreadyEnter: 
 --- !u!1 &7691354643110470014
 GameObject:
   m_ObjectHideFlags: 0
