@@ -1,0 +1,24 @@
+﻿using RangerV;
+
+
+public class GameMainStarter : Starter
+{
+    public override void StarterSetup()
+    {
+        GlobalSystemStorage.Add<CursorProc>();
+        GlobalSystemStorage.Add<CorutineManager>();
+        GlobalSystemStorage.Add<FirstProc>();
+        GlobalSystemStorage.Add<PanelProc>();
+        GlobalSystemStorage.Add<CameraProc>();
+
+        //GlobalSystemStorage.Get<CameraProc>().need_camera = true; // костыль
+
+        GlobalSystemStorage.Add<StepProc>();
+        GlobalSystemStorage.Add<DoorSoundProc>();
+        GlobalSystemStorage.Add<PressMidlleRoomButtonProc>();
+        GlobalSystemStorage.Add<MidlleRoomProc>();
+        GlobalSystemStorage.Add<LastRoomCompositionProc>();
+
+        //часть процессингов запускается в PanelProc
+    }
+}
