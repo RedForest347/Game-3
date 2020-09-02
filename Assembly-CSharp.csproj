@@ -101,6 +101,7 @@
     <Compile Include="Assets\Framework\To tests\KernelManager.cs" />
     <Compile Include="Assets\Framework\To tests\Test.cs" />
     <Compile Include="Assets\Game\Scripts\Components\ActivateCanvasCmp.cs" />
+    <Compile Include="Assets\Game\Scripts\Components\AudioCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\CameraCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\CursorComp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\ButtonAnimCmp.cs" />
@@ -113,9 +114,8 @@
     <Compile Include="Assets\Game\Scripts\Components\Door\DoorCloseAutomaticallyCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\DoorLinkCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\FirstDataHolderCmp.cs" />
-    <Compile Include="Assets\Game\Scripts\Components\HideMeCmp.cs" />
-    <Compile Include="Assets\Game\Scripts\Components\LastRoomCompositionCmp.cs" />
-    <Compile Include="Assets\Game\Scripts\Components\LastRoomTriggerCmp.cs" />
+    <Compile Include="Assets\Game\Scripts\Components\LastRoom\LastRoomCompositionCmp.cs" />
+    <Compile Include="Assets\Game\Scripts\Components\LastRoom\LastRoomTriggerCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\MidlleRoom\MidlleRoomButtonCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\MidlleRoom\MidlleRoomCloneTriggerCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\MidlleRoom\MidlleRoomDataCmp.cs" />
@@ -124,10 +124,10 @@
     <Compile Include="Assets\Game\Scripts\Components\OutDatedCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\PanelCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Pedestal\PedestalCmp.cs" />
+    <Compile Include="Assets\Game\Scripts\Components\Pedestal\TextCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\PlayerCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\PlayerStepsCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\RigidbodyCmp.cs" />
-    <Compile Include="Assets\Game\Scripts\Components\TextCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\CameraProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\CursorProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\Door\CloseDoorProc.cs" />
@@ -150,12 +150,6 @@
     <Compile Include="Assets\Game\Scripts\Signals\StartGameSignal.cs" />
     <Compile Include="Assets\Game\Scripts\Starters\GameMainStarter.cs" />
     <Compile Include="Assets\Game\Scripts\Starters\GameTestStarter.cs" />
-    <Compile Include="Assets\Game\TestF\CameraController\CameraControllerStarter.cs" />
-    <Compile Include="Assets\Game\TestF\DoorButton\StarterDoorTest.cs" />
-    <Compile Include="Assets\Game\TestF\Pedestal\PedestalSceneStarter.cs" />
-    <Compile Include="Assets\Game\TestF\PlayerController\PlayerControllerStarter.cs" />
-    <Compile Include="Assets\Game\TestF\Sound\Components\AudioCmp.cs" />
-    <Compile Include="Assets\Game\TestF\Sound\SoundStarter.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Example\ExampleSceneScripts\FPSViewer.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Example\ExampleSceneScripts\MouseCamera.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Scripts\PostProcessVolume.cs" />
