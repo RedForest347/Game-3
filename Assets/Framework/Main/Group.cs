@@ -8,6 +8,10 @@ using System.Reflection;
 
 namespace RangerV
 {
+    ///идея: создать метод, который автоматом добавляет заданный метод в OnAddEntity и OnBeforeRemoveEntity и удаляет их, т.е.
+    ///сделать автоматический аналог логики, которая делается при добавлении методов процессинга в евент компонента
+
+
     /// <summary>
     /// создание группы:
     /// Group group = Group.Create(new ComponentsList<SomeComp1, SomeComp2>() -- компоненты, new ComponentsList<SomeComp3, SomeComp4> -- исключения);
