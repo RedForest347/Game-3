@@ -56,8 +56,10 @@ public class PressButtonProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICus
              
             if (button != 0 && ButtonGroup.Contains(button))
             {
+                Debug.Log("Contains");
                 if (InZone(Storage.GetComponent<ButtonCmp>(button), EntityBase.GetEntity(PlayerGroup.GetEntitiesArray()[0]).transform.position))
                 {
+                    Debug.Log("InZone");
                     Animation animation = Storage.GetComponent<ButtonAnimCmp>(button).anim;
                     bool door_is_closed = Storage.GetComponent<ButtonAnimCmp>(button).doorHolder.GetComponent<DoorAnimCmp>().is_close;
                     if (!animation.isPlaying && door_is_closed)

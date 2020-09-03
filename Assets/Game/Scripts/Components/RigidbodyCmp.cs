@@ -8,9 +8,9 @@ public class RigidbodyCmp : ComponentBase, ICustomAwake
 
     public void OnAwake()
     {
-        rigidbody = gameObject.GetComponent<Rigidbody>();
+        /*rigidbody = gameObject.GetComponent<Rigidbody>();
 
         if (rigidbody == null)
-            Debug.LogError("на сущности " + gameObject.name + " нет компонента rigidbody");
+            Debug.LogError("на сущности " + gameObject.name + " нет компонента rigidbody");*/
     }
 }

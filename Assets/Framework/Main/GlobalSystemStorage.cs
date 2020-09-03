@@ -28,7 +28,11 @@ namespace RangerV
         public static T Add<T>() where T : ProcessingBase, new()
         {
             if (Instance.Processings.ContainsKey(typeof(T)))
-                Debug.Log("Компонент " + typeof(T).Name + " уже добавлен в GlobalSystemStorage. он будет добавлен повторно");
+            {
+                Debug.LogError("Компонент " + typeof(T).Name + " уже добавлен в GlobalSystemStorage. он не может быть добавлен повторно");
+                return null;
+            }
+
 
             T processing = new T();
             Instance.Processings.Add(typeof(T), processing);

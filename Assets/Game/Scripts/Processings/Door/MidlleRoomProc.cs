@@ -23,11 +23,7 @@ public class MidlleRoomProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICust
 
 
         foreach (int data in MidlleCloneTriggerGroup)
-        {
-            Debug.Log("ent = " + data + " Storage.GetComponent<MidlleRoomCloneTriggerCmp>(data) = " + 
-                Storage.GetComponent<MidlleRoomCloneTriggerCmp>(data));
             Storage.GetComponent<MidlleRoomCloneTriggerCmp>(data).onTriggetEnter += MidlleCloneTriggerEnter;
-        }
 
         MidlleCloneTriggerGroup.OnAddEntity += OnAddMidlleClone;
         MidlleCloneTriggerGroup.OnBeforeRemoveEntity += OnRemoveMidlleClone;
@@ -64,8 +60,6 @@ public class MidlleRoomProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICust
     {
         if (Storage.GetComponent<PlayerCmp>(ent) != null)
         {
-            //Debug.Log("Enter LastRoomTriggerEnter");
-
             MidlleRoomDataCmp midlleRoomData = Storage.GetComponent<MidlleRoomDataCmp>(MidlleRoomDataGroup.GetEntitiesArray()[0]);
 
             if (midlleRoomData.last_active_button != 0)
@@ -82,10 +76,10 @@ public class MidlleRoomProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICust
     {
         if (Storage.GetComponent<PlayerCmp>(ent) != null)
         {
-            //Debug.Log("Enter MidlleCloneTriggerEnter");
-
-            RigidbodyCmp Player = Storage.GetComponent<RigidbodyCmp>(ent);
+            FPSCmp Player = Storage.GetComponent<FPSCmp>(ent);
+            Player.controller.enabled = false;
             Player.transform.position += new Vector3(56, 0, 0);
+            Player.controller.enabled = true;
         }
     }
 

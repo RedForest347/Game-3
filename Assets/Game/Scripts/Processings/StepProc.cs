@@ -5,22 +5,27 @@ using UnityEngine;
 
 public class StepProc : ProcessingBase, ICustomUpdate
 {
-    Group PlayerGroup = Group.Create(new ComponentsList<PlayerStepsCmp, RigidbodyCmp>());
+    Group PlayerGroup = Group.Create(new ComponentsList<PlayerStepsCmp, FPSCmp>());
 
     public void CustomUpdate()
     {
-        StepSound();
+        foreach (int player in PlayerGroup)
+        {
+            StepSound(player);
+        }
+        
     }
 
 
-    void StepSound()
+    void StepSound(int player)
     {
-        int player = PlayerGroup.GetEntitiesArray()[0];
-        Vector3 velocity = Storage.GetComponent<RigidbodyCmp>(player).rigidbody.velocity;
-        Vector2 gorisontal_velocity = new Vector2(velocity.x, velocity.z);
+        //int player = PlayerGroup.GetEntitiesArray()[0];
+        //Vector3 velocity = Storage.GetComponent<RigidbodyCmp>(player).rigidbody.velocity;
+        //Vector2 gorisontal_velocity = new Vector2(velocity.x, velocity.z);
         AudioSource audioSource = Storage.GetComponent<PlayerStepsCmp>(player).audioSource;
+        bool is_moving = Storage.GetComponent<FPSCmp>(player).is_moving;
 
-        if (gorisontal_velocity.magnitude > 0.1f)
+        if (is_moving)
         {
             if (!audioSource.isPlaying)
                 audioSource.Play();

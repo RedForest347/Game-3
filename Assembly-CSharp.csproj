@@ -113,6 +113,7 @@
     <Compile Include="Assets\Game\Scripts\Components\Door\DoorAnimCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\DoorCloseAutomaticallyCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\DoorLinkCmp.cs" />
+    <Compile Include="Assets\Game\Scripts\Components\Door\StairDoorDownCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\FirstDataHolderCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\LastRoom\LastRoomCompositionCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\LastRoom\LastRoomTriggerCmp.cs" />
@@ -150,6 +151,8 @@
     <Compile Include="Assets\Game\Scripts\Signals\StartGameSignal.cs" />
     <Compile Include="Assets\Game\Scripts\Starters\GameMainStarter.cs" />
     <Compile Include="Assets\Game\Scripts\Starters\GameTestStarter.cs" />
+    <Compile Include="Assets\Game\TestF\Cmp\FPSCmp.cs" />
+    <Compile Include="Assets\Game\TestF\Proc\FPSControllerProc.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Example\ExampleSceneScripts\FPSViewer.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Example\ExampleSceneScripts\MouseCamera.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Scripts\PostProcessVolume.cs" />

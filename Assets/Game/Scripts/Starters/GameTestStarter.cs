@@ -19,6 +19,9 @@ public class GameTestStarter : Starter
         //GlobalSystemStorage.Add<PedestalProc>();
         //GlobalSystemStorage.Add<ShowTextProc>();
         GlobalSystemStorage.Add<CameraProc>();
+        GlobalSystemStorage.Get<CameraProc>().need_camera = true;
+        //CameraProc
+        GlobalSystemStorage.Add<FPSControllerProc>();
         //GlobalSystemStorage.Add<StepProc>();
         //GlobalSystemStorage.Add<DoorSoundProc>();
         //GlobalSystemStorage.Add<PressMidlleRoomButtonProc>();
