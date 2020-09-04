@@ -5,5 +5,5 @@ using RangerV;
 
 public class StairDoorDownCmp : ComponentBase
 {
-
+    public List<GameObject> StairObj;
 }

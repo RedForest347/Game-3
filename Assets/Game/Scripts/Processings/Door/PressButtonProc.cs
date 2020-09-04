@@ -23,18 +23,32 @@ public class PressButtonProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICus
     public void OnAddEnt(int ent)
     {
         Storage.GetComponent<ButtonAnimCmp>(ent).OnPress += StartOpenDoor;
+        Storage.GetComponent<ButtonAnimCmp>(ent).OnStartPress += StartPressButton;
     }
 
     public void OnRemoveEnt(int ent)
     {
-        if (Storage.GetComponent<ButtonAnimCmp>(ent) == null)
-            Debug.Log("is NULL");
         Storage.GetComponent<ButtonAnimCmp>(ent).OnPress -= StartOpenDoor;
+        Storage.GetComponent<ButtonAnimCmp>(ent).OnStartPress -= StartPressButton;
     }
 
     public void CustomUpdate()
     {
         PressButton();
+    }
+
+    void StartPressButton(int button_sender)
+    {
+        int door = Storage.GetComponent<ButtonAnimCmp>(button_sender).doorHolder.GetComponent<EntityBase>().entity;
+
+        if (Storage.ContainsComponent<StairDoorDownCmp>(door))
+        {
+            GlobalSystemStorage.Get<LastRoomCompositionProc>().DeactivateComposition();
+
+            StairDoorDownCmp stairDoor = Storage.GetComponent<StairDoorDownCmp>(door);
+            for (int i = 0; i < stairDoor.StairObj.Count; i++)
+                stairDoor.StairObj[i].SetActive(true);
+        }
     }
 
     void StartOpenDoor(int button_sender)
@@ -44,7 +58,11 @@ public class PressButtonProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICus
         if (Storage.GetComponent<OutDatedCmp>(door) == null)
         {
             DoorAnimCmp doorAnimCmp = Storage.GetComponent<DoorAnimCmp>(door);
-            doorAnimCmp.anim.Play("DoorOpenAnim");
+
+            if (!Storage.ContainsComponent<StairDoorDownCmp>(door))
+                doorAnimCmp.anim.Play("DoorOpenAnim");
+            else
+                doorAnimCmp.anim.Play("DoorOpenReverseAnim");
         }
     }
 
@@ -56,10 +74,10 @@ public class PressButtonProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICus
              
             if (button != 0 && ButtonGroup.Contains(button))
             {
-                Debug.Log("Contains");
+                //Debug.Log("Contains");
                 if (InZone(Storage.GetComponent<ButtonCmp>(button), EntityBase.GetEntity(PlayerGroup.GetEntitiesArray()[0]).transform.position))
                 {
-                    Debug.Log("InZone");
+                    //Debug.Log("InZone");
                     Animation animation = Storage.GetComponent<ButtonAnimCmp>(button).anim;
                     bool door_is_closed = Storage.GetComponent<ButtonAnimCmp>(button).doorHolder.GetComponent<DoorAnimCmp>().is_close;
                     if (!animation.isPlaying && door_is_closed)

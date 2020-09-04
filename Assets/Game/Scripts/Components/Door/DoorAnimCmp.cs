@@ -21,6 +21,7 @@ public class DoorAnimCmp : ComponentBase, ICustomAwake
     public void OnAwake()
     {
         anim = GetComponent<Animation>();
+        is_close = true;
     }
 
     public void StartOpen()

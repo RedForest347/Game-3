@@ -113,6 +113,7 @@
     <Compile Include="Assets\Game\Scripts\Components\Door\DoorAnimCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\DoorCloseAutomaticallyCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\DoorLinkCmp.cs" />
+    <Compile Include="Assets\Game\Scripts\Components\Door\StairDoorButtonCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\StairDoorDownCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\FirstDataHolderCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\LastRoom\LastRoomCompositionCmp.cs" />
@@ -137,8 +138,10 @@
     <Compile Include="Assets\Game\Scripts\Processings\Door\MidlleRoomProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\Door\PressButtonProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\Door\PressMidlleRoomButtonProc.cs" />
+    <Compile Include="Assets\Game\Scripts\Processings\Door\PressStairButtonProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\Endings\BadEndProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\FirstProc.cs" />
+    <Compile Include="Assets\Game\Scripts\Processings\FPSControllerProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\LastRoomCompositionProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\MoveProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\PanelProc.cs" />
@@ -152,7 +155,6 @@
     <Compile Include="Assets\Game\Scripts\Starters\GameMainStarter.cs" />
     <Compile Include="Assets\Game\Scripts\Starters\GameTestStarter.cs" />
     <Compile Include="Assets\Game\TestF\Cmp\FPSCmp.cs" />
-    <Compile Include="Assets\Game\TestF\Proc\FPSControllerProc.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Example\ExampleSceneScripts\FPSViewer.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Example\ExampleSceneScripts\MouseCamera.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Scripts\PostProcessVolume.cs" />

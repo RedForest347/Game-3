@@ -80,7 +80,6 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
 
     void PressButton(int ent)
     {
-        Debug.Log("нажата кнопка №" + Storage.GetComponent<MidlleRoomButtonCmp>(ent).number + " в средней комнате");
         DeactivateComposition();
         ActivateComposition(ent);
     }
@@ -93,17 +92,11 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
         int composition_level = roomDataCmp.current_composition_level;
 
         if (roomDataCmp.alreadyEnter.Contains(button_number))
-        {
-            Debug.Log("в комнату № " + button_number + " уже входили");
             composition_level--;
-        }
+
 
         LastRoomCompositionCmp compositionCmp = Storage.GetComponent<LastRoomCompositionCmp>(CompositionGroup.GetEntitiesArray()[0]);
 
-
-
-
-        Debug.Log("необходима активация композиции уровня " + composition_level);
 
         if (composition_level >= 1)
             for (int i = 0; i < compositionCmp.FirstLevel.Count; i++)
@@ -119,10 +112,8 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
 
     }
 
-    void DeactivateComposition()
+    public void DeactivateComposition()
     {
-        Debug.Log("необходима деактивация композиции");
-        //int composition_level = Storage.GetComponent<MidlleRoomDataCmp>(MidlleRoomDataGroup.GetEntitiesArray()[0]).current_composition_level;
         LastRoomCompositionCmp compositionCmp = Storage.GetComponent<LastRoomCompositionCmp>(CompositionGroup.GetEntitiesArray()[0]);
 
         for (int i = 0; i < compositionCmp.FirstLevel.Count; i++)
@@ -142,7 +133,7 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
         int button = dataCmp.last_active_button;
         int number = Storage.GetComponent<MidlleRoomButtonCmp>(button).number;
 
-        Debug.Log("в итоге игрок вошел в комнату №" + number);
+        //Debug.Log("в итоге игрок вошел в комнату №" + number);
 
         if (dataCmp.alreadyEnter.Contains(number))
         {
