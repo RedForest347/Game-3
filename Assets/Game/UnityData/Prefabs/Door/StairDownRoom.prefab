@@ -657,7 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2867eb4fd48d13d47a945cb03d057eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switching_distances_gorizontal: 2
+  switching_distances_gorizontal: 4
 --- !u!114 &3264988024162547147
 MonoBehaviour:
   m_ObjectHideFlags: 0

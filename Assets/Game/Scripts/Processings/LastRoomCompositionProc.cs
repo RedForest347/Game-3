@@ -122,6 +122,8 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
             compositionCmp.SecondLevel[i].SetActive(false);
         for (int i = 0; i < compositionCmp.ThirdLevel.Count; i++)
             compositionCmp.ThirdLevel[i].SetActive(false);
+        for (int i = 0; i < compositionCmp.JustDeactivate.Count; i++)
+            compositionCmp.JustDeactivate[i].SetActive(false);
     }
 
 
@@ -142,10 +144,25 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
         else
         {
             dataCmp.alreadyEnter.Add(number);
+
+            if (dataCmp.current_composition_level >= 3)
+            {
+                ActivateStairDoors(dataCmp);
+                Debug.Log("Activate Doors");
+            }
+
             dataCmp.current_composition_level++;
         }
         
 
+    }
+
+    void ActivateStairDoors(MidlleRoomDataCmp roomDataCmp)
+    {
+        roomDataCmp.StairDoor.SetActive(true);
+        roomDataCmp.StairDoorClone.SetActive(true);
+        roomDataCmp.StairDoorClone.transform.position = roomDataCmp.StairDoor.transform.position - new Vector3(56, 0, 0);
+        //Debug.Log("StairDoor pos = " + roomDataCmp.StairDoor.transform.position + " clone pos = " + (roomDataCmp.StairDoor.transform.position + new Vector3(56, 0, 0)));
     }
 
     void ReEnter()// повторный вход в дверь, в которую уже входил

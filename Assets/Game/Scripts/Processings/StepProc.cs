@@ -24,8 +24,9 @@ public class StepProc : ProcessingBase, ICustomUpdate
         //Vector2 gorisontal_velocity = new Vector2(velocity.x, velocity.z);
         AudioSource audioSource = Storage.GetComponent<PlayerStepsCmp>(player).audioSource;
         bool is_moving = Storage.GetComponent<FPSCmp>(player).is_moving;
+        bool is_grounded = Storage.GetComponent<FPSCmp>(player).controller.isGrounded;
 
-        if (is_moving)
+        if (is_moving && is_grounded)
         {
             if (!audioSource.isPlaying)
                 audioSource.Play();

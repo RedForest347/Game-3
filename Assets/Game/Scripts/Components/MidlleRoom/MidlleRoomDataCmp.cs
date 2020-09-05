@@ -9,6 +9,9 @@ public class MidlleRoomDataCmp : ComponentBase, ICustomAwake
     public int last_active_button;
     public int current_composition_level;
 
+    public GameObject StairDoor;
+    public GameObject StairDoorClone;
+
     public List<int> alreadyEnter;
 
     public void OnAwake()

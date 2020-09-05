@@ -366,9 +366,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_moving: 0
-  move_force: 120
+  move_force: 37
   jump_force: 50
-  rotation_force: 1
+  rotation_force: 0.6
   gravityData:
     current_vertical_velicity: 0
     gravity: 2
