@@ -4,7 +4,7 @@ using UnityEngine;
 using RangerV;
 using System;
 
-public class FPSControllerProc : ProcessingBase, ICustomAwake, ICustomFixedUpdate, IReceive<ChangeMoveStateSignal>
+public class FPSControllerProc : ProcessingBase, ICustomAwake, ICustomFixedUpdate, IReceive<ChangeMoveStateSignal>, IReceive<StopMoveSignal>
 {
     Group PlayerGroup = Group.Create(new ComponentsList<PlayerCmp, FPSCmp>());
 
@@ -13,6 +13,7 @@ public class FPSControllerProc : ProcessingBase, ICustomAwake, ICustomFixedUpdat
     public void OnAwake()
     {
         SignalManager<ChangeMoveStateSignal>.Instance.AddReceiver(this);
+        SignalManager<StopMoveSignal>.Instance.AddReceiver(this);
         need_move = true;
     }
 
@@ -98,5 +99,21 @@ public class FPSControllerProc : ProcessingBase, ICustomAwake, ICustomFixedUpdat
     public void SignalHandler(ChangeMoveStateSignal arg)
     {
         need_move = arg.signal_to_start;
+    }
+
+    public void SignalHandler(StopMoveSignal arg)
+    {
+        need_move = !arg.signal_to_stop;
+
+        if (!need_move)
+        {
+            foreach (int player in PlayerGroup)
+            {
+                Storage.GetComponent<FPSCmp>(player).is_moving = false;
+            }
+
+        }
+
+
     }
 }

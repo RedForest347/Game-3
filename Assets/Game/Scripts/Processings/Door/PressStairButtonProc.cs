@@ -104,6 +104,6 @@ public class PressStairButtonProc : ProcessingBase, ICustomUpdate, ICustomAwake,
     public void OnCustomDisable()
     {
         ButtonGroup.OnAddEntity -= OnAddEnt;
-        ButtonGroup.OnAfterRemoveEntity -= OnRemoveEnt;
+        ButtonGroup.OnBeforeRemoveEntity -= OnRemoveEnt;
     }
 }

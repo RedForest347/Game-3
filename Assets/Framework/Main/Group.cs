@@ -123,7 +123,7 @@ namespace RangerV
         long hash_code_exceptions;
 
         public event Action<int> OnAddEntity;
-        public event Action<int> OnAfterRemoveEntity;
+        //public event Action<int> OnAfterRemoveEntity;
         public event Action<int> OnBeforeRemoveEntity;
 
         private Group(List<Type> Components) : this(Components, new List<Type>(0)) { }
@@ -176,7 +176,7 @@ namespace RangerV
             if (EntityBase.GetEntity(entity) == null)
                 Debug.Log("EntityBase.GetEntity(entity) == null");
 
-            OnAfterRemoveEntity?.Invoke(entity);
+            //OnAfterRemoveEntity?.Invoke(entity);
         }
 
         public List<Type> GetComponentTypes()

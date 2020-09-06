@@ -34,6 +34,6 @@ public class DoorOCStateProc : ProcessingBase, ICustomAwake, ICustomDisable
     public void OnCustomDisable()
     {
         DoorGroup.OnAddEntity -= OnAddEnt;
-        DoorGroup.OnAfterRemoveEntity -= OnRemoveEnt;
+        DoorGroup.OnBeforeRemoveEntity -= OnRemoveEnt;
     }
 }

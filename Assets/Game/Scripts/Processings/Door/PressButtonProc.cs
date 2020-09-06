@@ -120,6 +120,6 @@ public class PressButtonProc : ProcessingBase, ICustomUpdate, ICustomAwake, ICus
     public void OnCustomDisable()
     {
         ButtonGroup.OnAddEntity -= OnAddEnt;
-        ButtonGroup.OnAfterRemoveEntity -= OnRemoveEnt;
+        ButtonGroup.OnBeforeRemoveEntity -= OnRemoveEnt;
     }
 }

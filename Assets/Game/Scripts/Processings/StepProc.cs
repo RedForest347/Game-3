@@ -26,8 +26,11 @@ public class StepProc : ProcessingBase, ICustomUpdate
         bool is_moving = Storage.GetComponent<FPSCmp>(player).is_moving;
         bool is_grounded = Storage.GetComponent<FPSCmp>(player).controller.isGrounded;
 
+
+
         if (is_moving && is_grounded)
         {
+            //Debug.Log("музыка On");
             if (!audioSource.isPlaying)
                 audioSource.Play();
 

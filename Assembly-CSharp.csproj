@@ -109,12 +109,14 @@
     <Compile Include="Assets\Game\Scripts\Components\Door\ButtonLinkCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\ButtonMaterialCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\CorridorDoorCmp.cs" />
-    <Compile Include="Assets\Game\Scripts\Components\Door\Door.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\DoorAnimCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\DoorCloseAutomaticallyCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\DoorLinkCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\StairDoorButtonCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\StairDoorDownCmp.cs" />
+    <Compile Include="Assets\Game\Scripts\Components\EndCorridor\EndCorridorDataCmp.cs" />
+    <Compile Include="Assets\Game\Scripts\Components\EndCorridor\EndCorridorPanelCmp.cs" />
+    <Compile Include="Assets\Game\Scripts\Components\EndCorridor\EndStairTriggerCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\FirstDataHolderCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\LastRoom\LastRoomCompositionCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\LastRoom\LastRoomTriggerCmp.cs" />
@@ -140,6 +142,7 @@
     <Compile Include="Assets\Game\Scripts\Processings\Door\PressMidlleRoomButtonProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\Door\PressStairButtonProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\Endings\BadEndProc.cs" />
+    <Compile Include="Assets\Game\Scripts\Processings\EndStairProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\FirstProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\FPSControllerProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\LastRoomCompositionProc.cs" />
@@ -152,9 +155,12 @@
     <Compile Include="Assets\Game\Scripts\Signals\ChangeMoveStateSignal.cs" />
     <Compile Include="Assets\Game\Scripts\Signals\CompleteWriteTextSignal.cs" />
     <Compile Include="Assets\Game\Scripts\Signals\StartGameSignal.cs" />
+    <Compile Include="Assets\Game\Scripts\Signals\StopMoveSignal.cs" />
     <Compile Include="Assets\Game\Scripts\Starters\GameMainStarter.cs" />
     <Compile Include="Assets\Game\Scripts\Starters\GameTestStarter.cs" />
+    <Compile Include="Assets\Game\TestF\Cmp\AutomaticOpenDoorCmp.cs" />
     <Compile Include="Assets\Game\TestF\Cmp\FPSCmp.cs" />
+    <Compile Include="Assets\Game\TestF\Proc\AutomaticOpenDoorProc.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Example\ExampleSceneScripts\FPSViewer.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Example\ExampleSceneScripts\MouseCamera.cs" />
     <Compile Include="Assets\PostProcessingVolume\PostProcessing Volume\Scripts\PostProcessVolume.cs" />
