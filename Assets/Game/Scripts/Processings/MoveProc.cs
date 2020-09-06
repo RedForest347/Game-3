@@ -31,7 +31,6 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
         {
             foreach (int player in MoveGroup)
             {
-                //Move(player);
                 Rotate(player);
             }
         }
@@ -41,11 +40,9 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
     {
         if (need_move)
         {
-            //Debug.Log("DDD");
             foreach (int player in MoveGroup)
             {
                 Move(player);
-                //Rotate(player);
             }
 
             foreach (int player in JumpGroup)
@@ -59,7 +56,7 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
     void Move(int entity)
     {
         MoveCmp moveCmp = Storage.GetComponent<MoveCmp>(entity);
-        Rigidbody rigidbody = Storage.GetComponent<RigidbodyCmp>(entity).rigidbody;
+        //Rigidbody rigidbody = Storage.GetComponent<RigidbodyCmp>(entity).rigidbody;
         MoveControls moveControls = moveCmp.moveControls;
 
         float force = moveCmp.move_speed * Time.fixedDeltaTime * 100;
@@ -67,7 +64,7 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
         if (Input.GetKey(moveControls.Forvard) || Input.GetKey(moveControls.Backward) && Input.GetKey(moveControls.Left) || Input.GetKey(moveControls.Rigt))
             force /= (float)Math.Sqrt(2);
 
-        if (Input.GetKey(moveControls.Forvard))
+        /*if (Input.GetKey(moveControls.Forvard))
             rigidbody.AddRelativeForce(new Vector3(force, 0, 0));
         else if (Input.GetKey(moveControls.Backward))
             rigidbody.AddRelativeForce(new Vector3(-force, 0, 0));
@@ -84,15 +81,15 @@ public class MoveProc : ProcessingBase, ICustomFixedUpdate, ICustomUpdate, ICust
         {
             gorizontal_speed = gorizontal_speed.normalized * moveCmp.max_move_speed;
             rigidbody.velocity = new Vector3(gorizontal_speed.x, rigidbody.velocity.y, gorizontal_speed.y);
-        }
+        }*/
     }
 
     void Rotate(int entity)
     {
         float sensitivity = Storage.GetComponent<MoveCmp>(entity).rotate_sensitivity_y;
         Vector3 MyAngle = new Vector3(0, Input.GetAxis("Mouse X") * sensitivity, 0);
-        RigidbodyCmp rigidbodyCmp = Storage.GetComponent<RigidbodyCmp>(entity);
-        rigidbodyCmp.rigidbody.MoveRotation(rigidbodyCmp.transform.rotation * Quaternion.Euler(MyAngle));
+        //RigidbodyCmp rigidbodyCmp = Storage.GetComponent<RigidbodyCmp>(entity);
+        //rigidbodyCmp.rigidbody.MoveRotation(rigidbodyCmp.transform.rotation * Quaternion.Euler(MyAngle));
     }
 
     void Jump(int player)

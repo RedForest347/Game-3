@@ -80,7 +80,6 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
 
     void PressButton(int ent)
     {
-        Debug.Log("нажата кнопка №" + Storage.GetComponent<MidlleRoomButtonCmp>(ent).number + " в средней комнате");
         DeactivateComposition();
         ActivateComposition(ent);
     }
@@ -93,17 +92,11 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
         int composition_level = roomDataCmp.current_composition_level;
 
         if (roomDataCmp.alreadyEnter.Contains(button_number))
-        {
-            Debug.Log("в комнату № " + button_number + " уже входили");
             composition_level--;
-        }
+
 
         LastRoomCompositionCmp compositionCmp = Storage.GetComponent<LastRoomCompositionCmp>(CompositionGroup.GetEntitiesArray()[0]);
 
-
-
-
-        Debug.Log("необходима активация композиции уровня " + composition_level);
 
         if (composition_level >= 1)
             for (int i = 0; i < compositionCmp.FirstLevel.Count; i++)
@@ -119,10 +112,8 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
 
     }
 
-    void DeactivateComposition()
+    public void DeactivateComposition()
     {
-        Debug.Log("необходима деактивация композиции");
-        //int composition_level = Storage.GetComponent<MidlleRoomDataCmp>(MidlleRoomDataGroup.GetEntitiesArray()[0]).current_composition_level;
         LastRoomCompositionCmp compositionCmp = Storage.GetComponent<LastRoomCompositionCmp>(CompositionGroup.GetEntitiesArray()[0]);
 
         for (int i = 0; i < compositionCmp.FirstLevel.Count; i++)
@@ -131,6 +122,8 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
             compositionCmp.SecondLevel[i].SetActive(false);
         for (int i = 0; i < compositionCmp.ThirdLevel.Count; i++)
             compositionCmp.ThirdLevel[i].SetActive(false);
+        for (int i = 0; i < compositionCmp.JustDeactivate.Count; i++)
+            compositionCmp.JustDeactivate[i].SetActive(false);
     }
 
 
@@ -142,7 +135,7 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
         int button = dataCmp.last_active_button;
         int number = Storage.GetComponent<MidlleRoomButtonCmp>(button).number;
 
-        Debug.Log("в итоге игрок вошел в комнату №" + number);
+        //Debug.Log("в итоге игрок вошел в комнату №" + number);
 
         if (dataCmp.alreadyEnter.Contains(number))
         {
@@ -151,10 +144,25 @@ public class LastRoomCompositionProc : ProcessingBase, ICustomAwake, ICustomStar
         else
         {
             dataCmp.alreadyEnter.Add(number);
+
+            if (dataCmp.current_composition_level >= 3)
+            {
+                ActivateStairDoors(dataCmp);
+                Debug.Log("Activate Doors");
+            }
+
             dataCmp.current_composition_level++;
         }
         
 
+    }
+
+    void ActivateStairDoors(MidlleRoomDataCmp roomDataCmp)
+    {
+        roomDataCmp.StairDoor.SetActive(true);
+        roomDataCmp.StairDoorClone.SetActive(true);
+        roomDataCmp.StairDoorClone.transform.position = roomDataCmp.StairDoor.transform.position - new Vector3(56, 0, 0);
+        //Debug.Log("StairDoor pos = " + roomDataCmp.StairDoor.transform.position + " clone pos = " + (roomDataCmp.StairDoor.transform.position + new Vector3(56, 0, 0)));
     }
 
     void ReEnter()// повторный вход в дверь, в которую уже входил

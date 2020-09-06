@@ -8,4 +8,5 @@ public class LastRoomCompositionCmp : ComponentBase
     public List<GameObject> FirstLevel;
     public List<GameObject> SecondLevel;
     public List<GameObject> ThirdLevel;
+    public List<GameObject> JustDeactivate;
 }

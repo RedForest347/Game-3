@@ -23,8 +23,10 @@ public class CloseDoorProc : ProcessingBase, ICustomUpdate
 
                 if (!InZone(doorComponent, player_pos) && doorAnim.is_open)
                 {
-                    //Debug.Log("дверь следует закрыть");
-                    EntityBase.GetEntity(door).GetComponent<DoorAnimCmp>().anim.Play("DoorCloseAnim");
+                    if (!Storage.ContainsComponent<StairDoorDownCmp>(door))
+                        EntityBase.GetEntity(door).GetComponent<DoorAnimCmp>().anim.Play("DoorCloseAnim");
+                    else
+                        EntityBase.GetEntity(door).GetComponent<DoorAnimCmp>().anim.Play("DoorCloseReverseAnim");
                 }
             }
         }

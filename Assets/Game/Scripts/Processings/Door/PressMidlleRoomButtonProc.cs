@@ -102,6 +102,6 @@ public class PressMidlleRoomButtonProc : ProcessingBase, ICustomUpdate, ICustomA
     public void OnCustomDisable()
     {
         ButtonGroup.OnAddEntity -= OnAddEnt;
-        ButtonGroup.OnAfterRemoveEntity -= OnRemoveEnt;
+        ButtonGroup.OnBeforeRemoveEntity -= OnRemoveEnt;
     }
 }

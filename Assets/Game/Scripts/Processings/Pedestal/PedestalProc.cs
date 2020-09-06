@@ -84,19 +84,14 @@ public class PedestalProc : ProcessingBase, ICustomStart, ICustomUpdate, ICustom
                 UIElem.SetActive(false);
 
                 EntityBase.GetEntity(last_active_book).AddCmp<OutDatedCmp>();
-                //EntityBase.GetEntity(last_active_book).AddCmp<DoorLinkCmp>();
-                //Debug.Log("is null " + (Storage.GetComponent<OutDatedCmp>(last_active_book) == null));
-                //Debug.Log("Add");
 
-                
                 int corridor_door = CorridorDoorGroup.GetEntitiesArray()[0];
-                //Storage.RemoveComponent<OutDatedCmp>(corridor_door);
                 EntityBase.GetEntity(corridor_door).RemoveCmp<OutDatedCmp>();
                 int button = Storage.GetComponent<ButtonLinkCmp>(corridor_door).Button.entity;
                 Storage.GetComponent<ButtonCmp>(button).meshRenderer.material = Storage.GetComponent<ButtonMaterialCmp>(button).Green;
                 in_book = false;
 
-                Storage.GetComponent<PedestalCmp>(book).Text.SetActive(false);
+                Storage.GetComponent<PedestalCmp>(last_active_book).Text.SetActive(false);
             }
         }
     }

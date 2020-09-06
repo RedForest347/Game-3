@@ -23,8 +23,11 @@ public class PanelProc : ProcessingBase
     void StartProc()
     {
         //GlobalSystemStorage.Add<CameraProc>();
-        GlobalSystemStorage.Add<MoveProc>();
+        //GlobalSystemStorage.Add<MoveProc>();
+
+        GlobalSystemStorage.Add<FPSControllerProc>();
         GlobalSystemStorage.Add<PressButtonProc>();
+        GlobalSystemStorage.Add<PressStairButtonProc>();
         GlobalSystemStorage.Add<CloseDoorProc>();
         GlobalSystemStorage.Add<DoorOCStateProc>();
         GlobalSystemStorage.Add<PedestalProc>();

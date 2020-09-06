@@ -18,6 +18,8 @@ public class GameMainStarter : Starter
         GlobalSystemStorage.Add<PressMidlleRoomButtonProc>();
         GlobalSystemStorage.Add<MidlleRoomProc>();
         GlobalSystemStorage.Add<LastRoomCompositionProc>();
+        GlobalSystemStorage.Add<AutomaticOpenDoorProc>();
+        GlobalSystemStorage.Add<EndStairProc>();
 
         //часть процессингов запускается в PanelProc
     }
