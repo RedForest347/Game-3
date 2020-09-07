@@ -1,7 +1,7 @@
 ﻿using RangerV;
 using UnityEngine;
 
-public class CameraProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomUpdate, IReceive<ChangeMoveStateSignal>, IReceive<StartGameSignal>
+public class CameraProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomUpdate, IReceive<ChangeMoveStateSignal>, IReceive<StartGameSignal>, IReceive<StopMoveSignal>
 {
     Group CameraGroup = Group.Create(new ComponentsList<CameraCmp>());
     Group PlayerGroup = Group.Create(new ComponentsList<PlayerCmp>());
@@ -19,6 +19,7 @@ public class CameraProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomUpd
     {
         SignalManager<ChangeMoveStateSignal>.Instance.AddReceiver(this);
         SignalManager<StartGameSignal>.Instance.AddReceiver(this);
+        SignalManager<StopMoveSignal>.Instance.AddReceiver(this);
     }
 
     public void CustomUpdate()
@@ -56,5 +57,10 @@ public class CameraProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomUpd
     public void SignalHandler(StartGameSignal arg)
     {
         need_camera = true;
+    }
+
+    public void SignalHandler(StopMoveSignal arg)
+    {
+        need_camera = !arg.signal_to_stop;
     }
 }

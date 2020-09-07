@@ -7,7 +7,7 @@ public class EndStairProc : ProcessingBase, ICustomAwake, ICustomUpdate, ICustom
 {
     Group EndStairTriggerGroup = Group.Create(new ComponentsList<EndStairTriggerCmp>());
     Group EndCorridorGroup = Group.Create(new ComponentsList<EndCorridorDataCmp>());
-    Group EndCorridorPanelGroup = Group.Create(new ComponentsList<EndCorridorPanelCmp>());
+    Group EndCorridorPanelGroup = Group.Create(new ComponentsList<SmoothTransitionCmp, EndCorridorPanelCmp>());
     Group PlayerGroup = Group.Create(new ComponentsList<PlayerCmp, FPSCmp>());
 
 
@@ -20,7 +20,7 @@ public class EndStairProc : ProcessingBase, ICustomAwake, ICustomUpdate, ICustom
         EndStairTriggerGroup.OnBeforeRemoveEntity += TriggerRemoveEntity;
 
 
-        foreach (int end_panel in EndStairTriggerGroup)
+        foreach (int end_panel in EndCorridorPanelGroup)
             EndPanelAddEntity(end_panel);
 
         EndCorridorPanelGroup.OnAddEntity += EndPanelAddEntity;
@@ -40,22 +40,22 @@ public class EndStairProc : ProcessingBase, ICustomAwake, ICustomUpdate, ICustom
 
     void EndPanelAddEntity(int ent)
     {
-        Storage.GetComponent<EndCorridorPanelCmp>(ent).screenDarkening += ScreenDarkening;
-        Storage.GetComponent<EndCorridorPanelCmp>(ent).screenUndarkening += ScreenUndarkening;
+        Storage.GetComponent<SmoothTransitionCmp>(ent).screenDarkening += ScreenDarkening;
+        Storage.GetComponent<SmoothTransitionCmp>(ent).screenUndarkening += ScreenUndarkening;
     }
 
     void EndPanelRemoveEntity(int ent)
     {
-        Storage.GetComponent<EndCorridorPanelCmp>(ent).screenDarkening -= ScreenDarkening;
-        Storage.GetComponent<EndCorridorPanelCmp>(ent).screenUndarkening -= ScreenUndarkening;
+        Storage.GetComponent<SmoothTransitionCmp>(ent).screenDarkening -= ScreenDarkening;
+        Storage.GetComponent<SmoothTransitionCmp>(ent).screenUndarkening -= ScreenUndarkening;
     }
 
     void TriggerEnter(int player)
     {
         //Debug.Log(EntityBase.GetEntity(player).gameObject.name + " вошел в триггер");
         int end_panel = EndCorridorPanelGroup.GetEntitiesArray()[0];
-        Storage.GetComponent<EndCorridorPanelCmp>(end_panel).gameObject.SetActive(true);
-        Storage.GetComponent<EndCorridorPanelCmp>(end_panel).anim.Play();
+        Storage.GetComponent<SmoothTransitionCmp>(end_panel).gameObject.SetActive(true);
+        Storage.GetComponent<SmoothTransitionCmp>(end_panel).anim.Play();
 
         SignalManager<StopMoveSignal>.Instance.SendSignal(new StopMoveSignal(true));
 

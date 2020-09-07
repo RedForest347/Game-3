@@ -20,6 +20,11 @@ public class GameMainStarter : Starter
         GlobalSystemStorage.Add<LastRoomCompositionProc>();
         GlobalSystemStorage.Add<AutomaticOpenDoorProc>();
         GlobalSystemStorage.Add<EndStairProc>();
+        GlobalSystemStorage.Add<FallProc>();
+
+
+
+        GlobalSystemStorage.Add<EndGameProc>();
 
         //часть процессингов запускается в PanelProc
     }
