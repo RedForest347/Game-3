@@ -21,6 +21,7 @@ public class GameMainStarter : Starter
         GlobalSystemStorage.Add<AutomaticOpenDoorProc>();
         GlobalSystemStorage.Add<EndStairProc>();
         GlobalSystemStorage.Add<FallProc>();
+        GlobalSystemStorage.Add<ClassicMusicProc>();
 
 
 

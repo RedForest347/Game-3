@@ -16,7 +16,7 @@ public class ShowTextProc : ProcessingBase, ICustomAwake, IReceive<CompleteWrite
     public void SignalHandler(CompleteWriteTextSignal arg)
     {
         int text = TextGroup.GetEntitiesArray()[0];
-        Storage.GetComponent<TextCmp>(text).textMesh.text = arg.text;
+        //Storage.GetComponent<TextCmp>(text).textMesh.text = arg.text;
 
     }
 }

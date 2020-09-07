@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RangerV;
+using Stopwatch = System.Diagnostics.Stopwatch;
 
 public class EndGameProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomDisable
 {
     Group EndGameTriggerGroup = Group.Create(new ComponentsList<EndGameTriggerCmp>());
     Group PlayerGroup = Group.Create(new ComponentsList<FPSCmp, PlayerCmp>());
+    Group FirstDataGroup = Group.Create(new ComponentsList<FirstDataHolderCmp>());
     //Group TitleGroup = Group.Create(new ComponentsList<TitlesCmp>());
 
     public void OnAwake()
@@ -41,44 +43,8 @@ public class EndGameProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomDi
     void TriggerEnter(int ent)
     {
         CorutineManager.StartCorutine(EndProcess());
+        CorutineManager.StartCorutine(FinalSound());
 
-
-        /*SignalManager<StopMoveSignal>.Instance.SendSignal(new StopMoveSignal(true));
-
-
-        int player = PlayerGroup.GetEntitiesArray()[0];
-        int end_trigger = EndGameTriggerGroup.GetEntitiesArray()[0];
-        
-
-        FPSCmp fpsCmp = Storage.GetComponent<FPSCmp>(player);
-        EndGameTriggerCmp triggerCmp = Storage.GetComponent<EndGameTriggerCmp>(end_trigger);
-
-
-        triggerCmp.GameNameAnim.Play();
-
-
-
-        triggerCmp.endGamePanelAnim.Play();
-
-
-        //triggerCmp.TitleHolder.SetActive(true);
-
-        //int title = TitleGroup.GetEntitiesArray()[0];
-        //TitlesCmp titlesCmp = Storage.GetComponent<TitlesCmp>(title);
-        //titlesCmp.gameObject.SetActive(true);
-
-        fpsCmp.controller.enabled = false;
-        //fpsCmp.transform.position = triggerCmp.SpawnPoint.transform.position;
-        //fpsCmp.transform.rotation = Quaternion.Euler(0, 180, 0);
-
-        /*Debug.Log("Pos до = " + triggerCmp.TitleHolder.transform.position);
-        Debug.Log("SpawnPoint = " + triggerCmp.SpawnPoint.transform.position);
-        Debug.Log("TitleSpawnPoint = " + triggerCmp.TitleSpawnPoint.transform.position);
-        triggerCmp.TitleHolder.transform.position = triggerCmp.TitleSpawnPoint.transform.position;
-        Debug.Log("Pos после = " + triggerCmp.TitleHolder.transform.position);*/
-
-
-        //titlesCmp.anim.Play();
         Debug.Log("Complete");
     }
 
@@ -96,6 +62,7 @@ public class EndGameProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomDi
         fpsCmp.controller.enabled = false;
 
 
+
         triggerCmp.GameNameAnim.Play();
 
         while (triggerCmp.GameNameAnim.isPlaying)
@@ -111,6 +78,35 @@ public class EndGameProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomDi
 
 
         yield return null;
+    }
+
+    IEnumerator FinalSound()
+    {
+
+
+        int ent = FirstDataGroup.GetEntitiesArray()[0];
+        FirstDataHolderCmp dataHolderCmp = Storage.GetComponent<FirstDataHolderCmp>(ent);
+        dataHolderCmp.audioSource.PlayOneShot(dataHolderCmp.firstSteps, 1);
+        dataHolderCmp.audioSource.volume = 1;
+        float length = dataHolderCmp.firstSteps.length;
+        float volume_step = 1 / length / 2;
+
+        Stopwatch time = Stopwatch.StartNew();
+
+        while (time.Elapsed.Seconds < length)
+        {
+            dataHolderCmp.audioSource.volume -= volume_step * Time.deltaTime;
+            yield return null;
+        }
+        dataHolderCmp.audioSource.PlayOneShot(dataHolderCmp.firstSteps, 0.4f);
+
+        time = Stopwatch.StartNew();
+
+        while (time.Elapsed.Seconds < length)
+            yield return null;
+
+
+
     }
 
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5497881180589236872}
   - component: {fileID: 5497881180589236873}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,5 +121,5 @@ MonoBehaviour:
   offset_pos: {x: 0.1, y: 1.2, z: 0}
   offset_rotation: {x: 0, y: 90, z: 0}
   player_rotation: {x: 0, y: 0, z: 0}
-  max_rotation_y: 45
+  max_rotation_y: 60
   sensitivity: 1

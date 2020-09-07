@@ -103,6 +103,7 @@
     <Compile Include="Assets\Game\Scripts\Components\ActivateCanvasCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\AudioCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\CameraCmp.cs" />
+    <Compile Include="Assets\Game\Scripts\Components\ClassicMusicDataCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\CursorComp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\ButtonAnimCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\Door\ButtonCmp.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Assets\Game\Scripts\Components\SmoothTransitionCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Components\TitlesCmp.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\CameraProc.cs" />
+    <Compile Include="Assets\Game\Scripts\Processings\ClassicMusicProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\CursorProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\Door\CloseDoorProc.cs" />
     <Compile Include="Assets\Game\Scripts\Processings\Door\DoorOCStateProc.cs" />
