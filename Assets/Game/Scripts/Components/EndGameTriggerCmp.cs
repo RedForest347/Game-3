@@ -13,7 +13,9 @@ public class EndGameTriggerCmp : ComponentBase
     //public GameObject TitleSpawnPoint;
     //public GameObject TitleHolder;
     //public GameObject Level;
+    public Animation GameNameAnim;
     public Animation endGamePanelAnim;
+
 
     private void OnTriggerEnter(Collider other)
     {

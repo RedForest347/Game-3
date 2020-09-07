@@ -7,7 +7,7 @@ public class EndGameProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomDi
 {
     Group EndGameTriggerGroup = Group.Create(new ComponentsList<EndGameTriggerCmp>());
     Group PlayerGroup = Group.Create(new ComponentsList<FPSCmp, PlayerCmp>());
-    Group TitleGroup = Group.Create(new ComponentsList<TitlesCmp>());
+    //Group TitleGroup = Group.Create(new ComponentsList<TitlesCmp>());
 
     public void OnAwake()
     {
@@ -40,7 +40,10 @@ public class EndGameProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomDi
 
     void TriggerEnter(int ent)
     {
-        SignalManager<StopMoveSignal>.Instance.SendSignal(new StopMoveSignal(true));
+        CorutineManager.StartCorutine(EndProcess());
+
+
+        /*SignalManager<StopMoveSignal>.Instance.SendSignal(new StopMoveSignal(true));
 
 
         int player = PlayerGroup.GetEntitiesArray()[0];
@@ -49,10 +52,19 @@ public class EndGameProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomDi
 
         FPSCmp fpsCmp = Storage.GetComponent<FPSCmp>(player);
         EndGameTriggerCmp triggerCmp = Storage.GetComponent<EndGameTriggerCmp>(end_trigger);
+
+
+        triggerCmp.GameNameAnim.Play();
+
+
+
+        triggerCmp.endGamePanelAnim.Play();
+
+
         //triggerCmp.TitleHolder.SetActive(true);
 
-        int title = TitleGroup.GetEntitiesArray()[0];
-        TitlesCmp titlesCmp = Storage.GetComponent<TitlesCmp>(title);
+        //int title = TitleGroup.GetEntitiesArray()[0];
+        //TitlesCmp titlesCmp = Storage.GetComponent<TitlesCmp>(title);
         //titlesCmp.gameObject.SetActive(true);
 
         fpsCmp.controller.enabled = false;
@@ -66,8 +78,39 @@ public class EndGameProc : ProcessingBase, ICustomAwake, ICustomStart, ICustomDi
         Debug.Log("Pos после = " + triggerCmp.TitleHolder.transform.position);*/
 
 
-        titlesCmp.anim.Play();
+        //titlesCmp.anim.Play();
         Debug.Log("Complete");
+    }
+
+
+    IEnumerator EndProcess()
+    {
+        SignalManager<StopMoveSignal>.Instance.SendSignal(new StopMoveSignal(true));
+
+        int player = PlayerGroup.GetEntitiesArray()[0];
+        int end_trigger = EndGameTriggerGroup.GetEntitiesArray()[0];
+
+        FPSCmp fpsCmp = Storage.GetComponent<FPSCmp>(player);
+        EndGameTriggerCmp triggerCmp = Storage.GetComponent<EndGameTriggerCmp>(end_trigger);
+
+        fpsCmp.controller.enabled = false;
+
+
+        triggerCmp.GameNameAnim.Play();
+
+        while (triggerCmp.GameNameAnim.isPlaying)
+            yield return null;
+
+        triggerCmp.endGamePanelAnim.Play();
+
+        while (triggerCmp.endGamePanelAnim.isPlaying)
+            yield return null;
+
+        Debug.Log("End");
+
+
+
+        yield return null;
     }
 
 
